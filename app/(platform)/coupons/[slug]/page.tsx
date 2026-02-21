@@ -123,6 +123,14 @@ export default async function CouponPage(props: CouponPageProps) {
                 ? [
                       {
                           "@type": "Question",
+                          name: "Which Educative plan is best (Standard vs Premium vs Premium Plus)?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: "Standard is best for hands-on courses, Premium adds projects + interview prep, and Premium Plus adds cloud labs. If you’re preparing for interviews, Premium is usually the best value.",
+                          },
+                      },
+                      {
+                          "@type": "Question",
                           name: "Can I stack multiple coupon codes?",
                           acceptedAnswer: {
                               "@type": "Answer",
@@ -143,6 +151,14 @@ export default async function CouponPage(props: CouponPageProps) {
                           acceptedAnswer: {
                               "@type": "Answer",
                               text: "Educative often offers a free trial or limited free access for new users. See the offer details on the official site during checkout.",
+                          },
+                      },
+                      {
+                          "@type": "Question",
+                          name: "Are there Educative discounts for System Design or Coding Interview prep?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: `Yes. Start with our topic pages: ${absoluteUrl("/coupons/educative/system-design")} and ${absoluteUrl("/coupons/educative/coding-interview")} for the best deal + the right course path.`,
                           },
                       },
                   ]
@@ -179,6 +195,24 @@ export default async function CouponPage(props: CouponPageProps) {
                                     <Button asChild variant="outline">
                                         <Link href="/courses/educative/">Browse Educative courses</Link>
                                     </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
+
+                    {platform.slug === "educative" && (
+                        <Card className="border-primary/20">
+                            <CardHeader>
+                                <CardTitle className="text-lg">Best ways to save on Educative</CardTitle>
+                            </CardHeader>
+                            <CardContent className="text-sm text-muted-foreground space-y-2">
+                                <div>- Best value usually comes from annual (or longer) plans.</div>
+                                <div>
+                                    - If you’re a student, check eligibility: <Link href="/coupons/educative/student-discount" className="underline">student discount</Link>.
+                                </div>
+                                <div>
+                                    - Popular learning goals: <Link href="/coupons/educative/system-design" className="underline">System Design</Link> and{" "}
+                                    <Link href="/coupons/educative/coding-interview" className="underline">Coding Interviews</Link>.
                                 </div>
                             </CardContent>
                         </Card>
@@ -266,6 +300,45 @@ export default async function CouponPage(props: CouponPageProps) {
                         </CardFooter>
                     </Card>
 
+                    {platform.slug === "educative" && (
+                        <Card className="border-primary/20">
+                            <CardHeader>
+                                <CardTitle className="text-lg">Plans overview (quick pick)</CardTitle>
+                            </CardHeader>
+                            <CardContent className="grid gap-4 md:grid-cols-3">
+                                <div className="rounded-lg border p-4">
+                                    <div className="text-sm font-semibold">Standard</div>
+                                    <div className="mt-2 text-sm text-muted-foreground">Best for: hands-on courses and structured learning.</div>
+                                </div>
+                                <div className="rounded-lg border p-4">
+                                    <div className="text-sm font-semibold">Premium</div>
+                                    <div className="mt-2 text-sm text-muted-foreground">Best for: interview prep + projects (most popular).</div>
+                                </div>
+                                <div className="rounded-lg border p-4">
+                                    <div className="text-sm font-semibold">Premium Plus</div>
+                                    <div className="mt-2 text-sm text-muted-foreground">Best for: projects + cloud labs for hands-on practice.</div>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
+
+                    {platform.slug === "educative" && (
+                        <Card className="border-primary/20">
+                            <CardHeader>
+                                <CardTitle className="text-lg">Discount proof / verification</CardTitle>
+                            </CardHeader>
+                            <CardContent className="text-sm text-muted-foreground space-y-2">
+                                <div>- We keep this page updated and monitor deal changes.</div>
+                                <div>- If a code doesn’t apply at checkout, try the deal link option (auto-applied where available).</div>
+                                <div>
+                                    - Start with a goal page:{" "}
+                                    <Link href="/coupons/educative/system-design" className="underline">System Design</Link> /{" "}
+                                    <Link href="/coupons/educative/coding-interview" className="underline">Coding Interview</Link>.
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
+
                     {/* Application Steps */}
                     <div className="space-y-4">
                         <h2 className="text-2xl font-bold">How to Apply the Coupon</h2>
@@ -331,6 +404,15 @@ export default async function CouponPage(props: CouponPageProps) {
                                 <>
                                     <div className="border rounded-lg p-4">
                                         <h3 className="font-semibold flex items-center gap-2">
+                                            <Info className="h-4 w-4 text-primary" /> Which Educative plan should I choose?
+                                        </h3>
+                                        <p className="mt-2 text-sm text-muted-foreground">
+                                            Standard is best for course-only learning. Premium adds projects + interview prep and is usually the best value for job seekers.
+                                            Premium Plus adds cloud labs.
+                                        </p>
+                                    </div>
+                                    <div className="border rounded-lg p-4">
+                                        <h3 className="font-semibold flex items-center gap-2">
                                             <Info className="h-4 w-4 text-primary" /> Can I stack multiple coupon codes?
                                         </h3>
                                         <p className="mt-2 text-sm text-muted-foreground">
@@ -351,6 +433,16 @@ export default async function CouponPage(props: CouponPageProps) {
                                         </h3>
                                         <p className="mt-2 text-sm text-muted-foreground">
                                             Educative often offers a free trial or limited free access for new users. Check the official site during signup.
+                                        </p>
+                                    </div>
+                                    <div className="border rounded-lg p-4">
+                                        <h3 className="font-semibold flex items-center gap-2">
+                                            <Info className="h-4 w-4 text-primary" /> Is there a discount for System Design or Coding Interview prep?
+                                        </h3>
+                                        <p className="mt-2 text-sm text-muted-foreground">
+                                            Yes — start with our goal pages:{" "}
+                                            <Link href="/coupons/educative/system-design" className="underline">Educative System Design coupon</Link> and{" "}
+                                            <Link href="/coupons/educative/coding-interview" className="underline">Educative Coding Interview coupon</Link>.
                                         </p>
                                     </div>
                                 </>

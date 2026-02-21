@@ -20,6 +20,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/tools/course-comparator`, lastModified: now },
     { url: `${SITE_URL}/search`, lastModified: now },
     { url: `${SITE_URL}/coupons/educative/student-discount`, lastModified: now },
+    { url: `${SITE_URL}/coupons/educative/system-design`, lastModified: now },
+    { url: `${SITE_URL}/coupons/educative/coding-interview`, lastModified: now },
     { url: `${SITE_URL}/about`, lastModified: now },
     { url: `${SITE_URL}/contact`, lastModified: now },
     { url: `${SITE_URL}/privacy`, lastModified: now },
