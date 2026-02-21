@@ -616,98 +616,96 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
               </div>
             </div>
 
-            <div className="overflow-x-auto">
-              <div className="flex items-end gap-4 min-w-[1120px]">
-                <div className="space-y-2 flex-1 min-w-[280px]">
-                  <Label htmlFor="cc-search">Search</Label>
-                  <Input id="cc-search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="e.g. system design, python" />
-                </div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:items-end">
+              <div className="space-y-2 lg:col-span-4">
+                <Label htmlFor="cc-search">Search</Label>
+                <Input id="cc-search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="e.g. system design, python" />
+              </div>
 
-                <div className="space-y-2 min-w-[180px]">
-                  <Label>Platform</Label>
-                  <Select value={filters.platformId} onValueChange={(v) => setFilters((f) => ({ ...f, platformId: v }))}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All platforms</SelectItem>
-                      {platforms.map((p) => (
-                        <SelectItem key={p.id} value={p.id}>
-                          {p.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="space-y-2 lg:col-span-2">
+                <Label>Platform</Label>
+                <Select value={filters.platformId} onValueChange={(v) => setFilters((f) => ({ ...f, platformId: v }))}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="All" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All platforms</SelectItem>
+                    {platforms.map((p) => (
+                      <SelectItem key={p.id} value={p.id}>
+                        {p.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-                <div className="space-y-2 flex-1 min-w-[240px]">
-                  <Label>Category</Label>
-                  <Select value={filters.category} onValueChange={(v) => setFilters((f) => ({ ...f, category: v }))}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All categories</SelectItem>
-                      {categories.map((cat) => (
-                        <SelectItem key={cat} value={cat}>
-                          {cat}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="space-y-2 lg:col-span-3">
+                <Label>Category</Label>
+                <Select value={filters.category} onValueChange={(v) => setFilters((f) => ({ ...f, category: v }))}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="All" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All categories</SelectItem>
+                    {categories.map((cat) => (
+                      <SelectItem key={cat} value={cat}>
+                        {cat}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-                <div className="space-y-2 min-w-[140px]">
-                  <Label>Level</Label>
-                  <Select value={filters.level} onValueChange={(v) => setFilters((f) => ({ ...f, level: v as Filters["level"] }))}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Any" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="any">Any</SelectItem>
-                      <SelectItem value="beginner">Beginner</SelectItem>
-                      <SelectItem value="intermediate">Intermediate</SelectItem>
-                      <SelectItem value="advanced">Advanced</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="space-y-2 lg:col-span-1">
+                <Label>Level</Label>
+                <Select value={filters.level} onValueChange={(v) => setFilters((f) => ({ ...f, level: v as Filters["level"] }))}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Any" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="any">Any</SelectItem>
+                    <SelectItem value="beginner">Beginner</SelectItem>
+                    <SelectItem value="intermediate">Intermediate</SelectItem>
+                    <SelectItem value="advanced">Advanced</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-                <div className="space-y-2 min-w-[160px]">
-                  <Label>Format</Label>
-                  <Select value={filters.format} onValueChange={(v) => setFilters((f) => ({ ...f, format: v as Filters["format"] }))}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Any" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="any">Any</SelectItem>
-                      <SelectItem value="text">Text</SelectItem>
-                      <SelectItem value="video">Video</SelectItem>
-                      <SelectItem value="interactive">Interactive</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="space-y-2 lg:col-span-2">
+                <Label>Format</Label>
+                <Select value={filters.format} onValueChange={(v) => setFilters((f) => ({ ...f, format: v as Filters["format"] }))}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Any" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="any">Any</SelectItem>
+                    <SelectItem value="text">Text</SelectItem>
+                    <SelectItem value="video">Video</SelectItem>
+                    <SelectItem value="interactive">Interactive</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-                <div className="space-y-2 min-w-[220px]">
-                  <Label>Sort selected</Label>
-                  <Select value={sortKey} onValueChange={(v) => setSortKey(v as SortKey)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="None" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="none">None</SelectItem>
-                      <SelectItem value="rating">Rating (high → low)</SelectItem>
-                      <SelectItem value="price_asc">Price (low → high)</SelectItem>
-                      <SelectItem value="price_desc">Price (high → low)</SelectItem>
-                      <SelectItem value="value">Value Score (high → low)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="space-y-2 lg:col-span-3">
+                <Label>Sort selected</Label>
+                <Select value={sortKey} onValueChange={(v) => setSortKey(v as SortKey)}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="None" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="none">None</SelectItem>
+                    <SelectItem value="rating">Rating (high → low)</SelectItem>
+                    <SelectItem value="price_asc">Price (low → high)</SelectItem>
+                    <SelectItem value="price_desc">Price (high → low)</SelectItem>
+                    <SelectItem value="value">Value Score (high → low)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-                <div className="pb-[2px]">
-                  <Button variant="outline" size="sm" onClick={resetFilters}>
-                    Reset filters
-                  </Button>
-                </div>
+              <div className="sm:col-span-2 lg:col-span-12 lg:flex lg:justify-end">
+                <Button variant="outline" size="sm" onClick={resetFilters}>
+                  Reset filters
+                </Button>
               </div>
             </div>
 
