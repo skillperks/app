@@ -163,6 +163,26 @@ export default async function CouponPage(props: CouponPageProps) {
                       },
                   ]
                 : []),
+            ...(platform.slug === "datacamp"
+                ? [
+                      {
+                          "@type": "Question",
+                          name: "Is there a DataCamp student discount?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: `Yes. See eligibility and how to claim it at ${absoluteUrl("/coupons/datacamp/student-discount")}.`,
+                          },
+                      },
+                      {
+                          "@type": "Question",
+                          name: "Is DataCamp annual cheaper than monthly?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: `Usually yes—annual promos often have the best savings. See: ${absoluteUrl("/coupons/datacamp/annual-discount")}.`,
+                          },
+                      },
+                  ]
+                : []),
         ],
     };
 
@@ -261,6 +281,23 @@ export default async function CouponPage(props: CouponPageProps) {
                                     <Button asChild variant="outline">
                                         <Link href="/courses/datacamp/">Browse DataCamp courses</Link>
                                     </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
+
+                    {platform.slug === "datacamp" && (
+                        <Card className="border-primary/20">
+                            <CardHeader>
+                                <CardTitle className="text-lg">Best ways to save on DataCamp</CardTitle>
+                            </CardHeader>
+                            <CardContent className="text-sm text-muted-foreground space-y-2">
+                                <div>- If you’re eligible, student pricing can be the best deal.</div>
+                                <div>
+                                    - See eligibility: <Link href="/coupons/datacamp/student-discount" className="underline">student discount</Link>.
+                                </div>
+                                <div>
+                                    - For most non-students, the biggest savings are on annual promos: <Link href="/coupons/datacamp/annual-discount" className="underline">annual discount</Link>.
                                 </div>
                             </CardContent>
                         </Card>
@@ -400,6 +437,30 @@ export default async function CouponPage(props: CouponPageProps) {
                                     <Link href={`/coupons/${platform.slug}/student-discount`} className="underline">View student discount</Link>
                                 </p>
                             </div>
+                            {platform.slug === "datacamp" && (
+                                <>
+                                    <div className="border rounded-lg p-4">
+                                        <h3 className="font-semibold flex items-center gap-2">
+                                            <Info className="h-4 w-4 text-primary" /> Is the DataCamp student plan worth it?
+                                        </h3>
+                                        <p className="mt-2 text-sm text-muted-foreground">
+                                            If you qualify, student pricing is often the best way to get DataCamp Premium year-round.
+                                            <span> </span>
+                                            <Link href="/coupons/datacamp/student-discount" className="underline">See eligibility & steps</Link>
+                                        </p>
+                                    </div>
+                                    <div className="border rounded-lg p-4">
+                                        <h3 className="font-semibold flex items-center gap-2">
+                                            <Info className="h-4 w-4 text-primary" /> Is annual cheaper than monthly?
+                                        </h3>
+                                        <p className="mt-2 text-sm text-muted-foreground">
+                                            Usually yes—annual promos can dramatically reduce the effective monthly cost.
+                                            <span> </span>
+                                            <Link href="/coupons/datacamp/annual-discount" className="underline">See annual discount</Link>
+                                        </p>
+                                    </div>
+                                </>
+                            )}
                             {platform.slug === "educative" && (
                                 <>
                                     <div className="border rounded-lg p-4">
