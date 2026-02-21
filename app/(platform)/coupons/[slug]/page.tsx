@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { Clock, Info, ShieldCheck } from "lucide-react";
@@ -19,6 +20,40 @@ interface CouponPageProps {
 
 export function generateStaticParams() {
     return getAllCouponSlugs();
+}
+
+export async function generateMetadata(props: CouponPageProps): Promise<Metadata> {
+    const params = await props.params;
+    const platform = getPlatformByCouponSlug(params.slug) ?? getPlatformBySlug(params.slug);
+
+    if (!platform) {
+        return {};
+    }
+
+    const couponPrimaryLabel = platform.slug === "exponent" ? "Promo Code" : "Coupon Code";
+    const canonicalPath = `/coupons/${platform.couponSlug}`;
+    const canonicalUrl = absoluteUrl(canonicalPath);
+    const title = `${platform.name} ${couponPrimaryLabel} & Deals (2026)`;
+    const description = `Verified ${platform.name} coupons and deals. Save up to ${platform.activeCoupon.discount}.`;
+
+    return {
+        title,
+        description,
+        alternates: {
+            canonical: canonicalUrl,
+        },
+        openGraph: {
+            title,
+            description,
+            url: canonicalUrl,
+            type: "article",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title,
+            description,
+        },
+    };
 }
 
 export default async function CouponPage(props: CouponPageProps) {
@@ -47,9 +82,49 @@ export default async function CouponPage(props: CouponPageProps) {
         url: canonicalUrl,
     });
 
+    const offerJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: `${platform.name} Subscription`,
+        url: canonicalUrl,
+        brand: {
+            "@type": "Brand",
+            name: platform.name,
+        },
+        offers: {
+            "@type": "Offer",
+            url: canonicalUrl,
+            description: `${platform.activeCoupon.discount} — ${platform.activeCoupon.description}`,
+            availability: "https://schema.org/InStock",
+        },
+    };
+
+    const faqJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+            {
+                "@type": "Question",
+                name: "Does this coupon work for existing users?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Typically, these coupons are for new subscribers only, but sometimes they work for renewals if you let your current plan expire.",
+                },
+            },
+            {
+                "@type": "Question",
+                name: `Is there a ${platform.name} student discount?`,
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: `Some platforms offer student pricing. For ${platform.name}, see our student discount details at ${absoluteUrl(`/coupons/${platform.slug}/student-discount`)}.`,
+                },
+            },
+        ],
+    };
+
     return (
         <div className="container px-4 py-10 md:px-6 md:py-16 mx-auto">
-            <JsonLd data={[breadcrumbJsonLd, articleJsonLd]} />
+            <JsonLd data={[breadcrumbJsonLd, articleJsonLd, offerJsonLd, faqJsonLd]} />
             <div className="grid gap-10 lg:grid-cols-[1fr_350px]">
                 {/* Main Content */}
                 <div className="space-y-8">
