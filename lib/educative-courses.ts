@@ -59,7 +59,7 @@ export const educativeCourses: EducativeCourse[] = [
         id: "grokking-coding-patterns",
         slug: "grokking-the-coding-interview-patterns",
         title: "Grokking the Coding Interview: Patterns for Coding Questions",
-        subtitle: "Master the most common patterns behind LeetCode-style problems",
+        subtitle: "Master the most common patterns behind interview-style problems",
         category: "Coding Interviews",
         difficulty: "Intermediate",
         estimatedHours: 20,
@@ -75,8 +75,8 @@ export const educativeCourses: EducativeCourse[] = [
         bestFor: ["Software engineering interviews", "FAANG-style rounds", "DSA refresh"],
         faq: [
             {
-                question: "Is this better than doing random LeetCode?",
-                answer: "Yes, because it teaches a structure. You can then apply the patterns to a broader set of LeetCode problems.",
+                question: "Is this better than doing random interview practice?",
+                answer: "Yes, because it teaches a structure. You can then apply the patterns to a broader set of interview problems.",
             },
             {
                 question: "Which language is used?",

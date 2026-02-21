@@ -55,10 +55,6 @@ export default function CourseFinderPage() {
       }
 
       if (answers.goal === "system-design") {
-        if (p.slug === "bytebytego") {
-          score += 5;
-          reasons.push("Focused on system design diagrams and patterns.");
-        }
         if (p.slug === "educative") {
           score += 4;
           reasons.push("Great system design course library (hands-on, text-based). ");
@@ -78,10 +74,6 @@ export default function CourseFinderPage() {
           score += 3;
           reasons.push("Good for interview prep via hands-on practice. ");
         }
-        if (p.slug === "bytebytego") {
-          score += 2;
-          reasons.push("Helpful for system design interview refresh. ");
-        }
       }
 
       if (answers.format === "text-interactive") {
@@ -92,7 +84,7 @@ export default function CourseFinderPage() {
       }
 
       if (answers.format === "video") {
-        if (p.slug === "exponent" || p.slug === "bytebytego") {
+        if (p.slug === "exponent") {
           score += 3;
           reasons.push("Better fit if you prefer video-style explanations.");
         }
@@ -104,10 +96,6 @@ export default function CourseFinderPage() {
       }
 
       if (answers.budget === "budget") {
-        if (p.slug === "bytebytego") {
-          score += 2;
-          reasons.push("Often a lower-cost option vs subscriptions.");
-        }
         if (p.slug === "datacamp") {
           score += 1;
           reasons.push("Has a free Basic tier (first chapters). ");

@@ -23,7 +23,7 @@ const levelConfig: Record<
   advanced: {
     title: "Advanced",
     description: "Specialize and optimize for interview performance and high-leverage skills.",
-    recommendedPlatformSlugs: ["bytebytego", "educative", "exponent"],
+    recommendedPlatformSlugs: ["educative", "exponent"],
   },
 };
 

@@ -24,7 +24,7 @@ const footerLinks = {
 
 export function Footer() {
     return (
-        <footer className="border-t bg-background">
+        <footer className="border-t border-border/60 bg-background/30 backdrop-blur">
             <div className="mx-auto container px-4 py-12 md:px-6 lg:py-16">
                 <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
                     <div className="col-span-2 lg:col-span-2">
@@ -100,7 +100,7 @@ export function Footer() {
                         </ul>
                     </div>
                 </div>
-                <div className="mt-12 border-t pt-8">
+                <div className="mt-12 border-t border-border/60 pt-8">
                     <p className="text-center text-xs text-muted-foreground">
                         &copy; {new Date().getFullYear()} SkillPerks. All rights reserved.
                     </p>

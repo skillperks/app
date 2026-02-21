@@ -1,37 +1,66 @@
 import Link from "next/link";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export function Hero() {
     return (
-        <section className="relative overflow-hidden bg-background py-20 pb-12 md:pb-20 lg:py-32">
+        <section className="relative overflow-hidden pt-24 pb-16 md:pt-28 lg:pt-32 lg:pb-24">
+            <div className="pointer-events-none absolute inset-0 opacity-30">
+                <div className="absolute -top-[20%] -left-[10%] h-[50%] w-[50%] rounded-full bg-purple-600/40 blur-[140px]" />
+                <div className="absolute -bottom-[20%] -right-[10%] h-[50%] w-[50%] rounded-full bg-cyan-600/40 blur-[140px]" />
+            </div>
             <div className="container relative z-10 px-4 md:px-6 mx-auto">
                 <div className="mx-auto max-w-3xl text-center">
-                    <div className="mb-6 inline-flex items-center rounded-full border bg-muted/50 px-3 py-1 text-sm text-muted-foreground backdrop-blur">
-                        <span className="flex items-center gap-1">
-                            <Zap className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                            <span className="font-medium text-foreground">New:</span> 2026 Tech Course Deals Updated Daily
-                        </span>
+                    <div className="mb-10 inline-flex items-center rounded-full border border-slate-700 bg-slate-800/80 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-cyan-400">
+                        <span className="mr-2.5 inline-flex h-2 w-2 animate-pulse rounded-full bg-cyan-400" />
+                        Now Analyzing 50+ Learning Ecosystems
                     </div>
-                    <h1 className="bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl">
-                        Find Your Perfect Tech Course <br className="hidden sm:inline" />
-                        in <span className="text-primary">60 Seconds</span>
+                    <h1 className="text-5xl font-extrabold tracking-tight leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl">
+                        Master Your{" "}
+                        <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Tech Stack</span>
+                        <br />
+                        Through Data
                     </h1>
                     <p className="mt-6 text-lg text-muted-foreground md:text-xl">
-                        Verified coupons, expert reviews, and smart comparisons for 50+ learning platforms. Stop overpaying for your career growth.
+                        Premium reviews and verified discounts for the tools used by world-class engineering teams. No fluff, just insights.
                     </p>
-                    <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                        <Button size="lg" className="h-12 w-full px-8 text-base sm:w-auto" asChild>
-                            <Link href="/tools/course-finder">
-                                Take the Course Finder Quiz
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                        </Button>
-                        <Button size="lg" variant="outline" className="h-12 w-full px-8 text-base sm:w-auto" asChild>
-                            <Link href="/coupons">
-                                Browse All Deals
-                            </Link>
-                        </Button>
+                    <div className="mt-8 mx-auto max-w-3xl">
+                        <div className="flex flex-col items-center gap-4 sm:flex-row">
+                            <div className="relative w-full flex-1">
+                                <Search className="pointer-events-none absolute left-6 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
+                                <input
+                                    placeholder="Find your next course..."
+                                    className="block w-full rounded-2xl border border-slate-700 bg-slate-900/60 py-5 pl-16 pr-8 text-lg outline-none transition-all placeholder:text-slate-600 focus:ring-2 focus:ring-cyan-500"
+                                />
+                            </div>
+                            <Button
+                                className="w-full rounded-2xl bg-gradient-to-r from-purple-600 to-purple-700 px-10 py-5 font-bold shadow-xl shadow-purple-500/20 hover:brightness-110 active:scale-[0.98] sm:w-auto"
+                                asChild
+                            >
+                                <Link href="/browse">
+                                    Search Courses
+                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
+                            </Button>
+                        </div>
+                        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+                            <span className="text-sm font-semibold uppercase tracking-widest text-slate-500">Hot Topics:</span>
+                            {[
+                                "System Design",
+                                "Kubernetes",
+                                "Rust Core",
+                                "Backend Infrastructure",
+                            ].map((label) => (
+                                <Badge
+                                    key={label}
+                                    variant="secondary"
+                                    className="rounded-full border border-slate-700 bg-slate-800/50 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors hover:border-cyan-500/50 hover:text-cyan-300"
+                                >
+                                    {label}
+                                </Badge>
+                            ))}
+                        </div>
                     </div>
                     <div className="mt-10 flex items-center justify-center gap-2 text-sm text-muted-foreground">
                         <div className="flex -space-x-2">
@@ -44,11 +73,6 @@ export function Hero() {
                         <p><span className="font-semibold text-foreground">10,000+</span> developers saved this month</p>
                     </div>
                 </div>
-            </div>
-
-            {/* Background decoration */}
-            <div className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl" aria-hidden="true">
-                <div className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-primary/20 to-secondary/20 opacity-30" style={{ clipPath: "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" }}></div>
             </div>
         </section>
     );

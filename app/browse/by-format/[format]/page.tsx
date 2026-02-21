@@ -18,7 +18,7 @@ const formatConfig: Record<
   "video-courses": {
     title: "Video Courses",
     description: "Video-first learning for guided explanations and demos.",
-    recommendedPlatformSlugs: ["exponent", "bytebytego"],
+    recommendedPlatformSlugs: ["exponent"],
   },
   bootcamps: {
     title: "Bootcamps",

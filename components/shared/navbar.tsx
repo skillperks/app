@@ -19,8 +19,7 @@ const navigation = [
     { name: "Categories", href: "/browse" },
     { name: "Reviews", href: "/reviews" },
     { name: "Comparisons", href: "/comparisons" },
-    { name: "Coupons", href: "/coupons" },
-    { name: "Guides", href: "/guides" },
+    { name: "Resources", href: "/guides" },
 ];
 
 export function Navbar() {
@@ -35,10 +34,11 @@ export function Navbar() {
     };
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div className="container flex h-16 items-center mx-auto px-4 md:px-6">
+        <header className="sticky top-0 z-50 w-full border-b border-slate-800/60 bg-[#0f172a]/90 backdrop-blur-md">
+            <div className="container flex h-20 items-center mx-auto px-4 md:px-6">
                 <div className="mr-8 flex">
                     <Link href="/" className="mr-6 flex items-center space-x-2">
+                        <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-cyan-500 shadow-lg shadow-cyan-500/20" />
                         <span className="text-xl font-bold tracking-tight">SkillPerks</span>
                     </Link>
                     <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
@@ -46,9 +46,9 @@ export function Navbar() {
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className={`transition-colors hover:text-foreground/80 ${pathname?.startsWith(item.href)
+                                className={`transition-colors hover:text-white ${pathname?.startsWith(item.href)
                                     ? "text-foreground"
-                                    : "text-foreground/60"
+                                    : "text-slate-400"
                                     }`}
                             >
                                 {item.name}
@@ -59,19 +59,18 @@ export function Navbar() {
                 <div className="flex flex-1 items-center justify-end space-x-4">
                     <div className="w-full flex-1 md:w-auto md:flex-none">
                         <div className="relative hidden md:block">
-                            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-500" />
                             <form onSubmit={onSearch}>
                                 <Input
                                     type="search"
                                     placeholder="Search platforms, guides..."
-                                    className="h-9 w-[200px] lg:w-[300px] pl-8"
+                                    className="h-9 w-[200px] lg:w-[320px] pl-8 rounded-full border border-slate-700 bg-slate-900/50 text-sm outline-none placeholder:text-slate-500 focus-visible:ring-cyan-500"
                                     value={query}
                                     onChange={(e) => setQuery(e.target.value)}
                                 />
                             </form>
                         </div>
                     </div>
-
 
                     <Sheet>
                         <SheetTrigger asChild>
