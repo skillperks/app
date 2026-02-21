@@ -128,6 +128,170 @@ export default async function ReviewPage(props: ReviewPageProps) {
                         </div>
                     </div>
 
+                    {platform.slug === "educative" && (
+                        <>
+                            <Separator />
+
+                            <div className="space-y-6">
+                                <h2 className="text-2xl font-bold">Educative Unlimited: what you get</h2>
+                                <Card>
+                                    <CardHeader>
+                                        <CardTitle>Why Educative works</CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="text-sm text-muted-foreground space-y-2">
+                                        <div>
+                                            - Educative is built around interactive, text-based lessons (great if you prefer reading + practicing over long videos).
+                                        </div>
+                                        <div>
+                                            - The subscription is designed for hands-on learning: courses, projects, assessments, and optional Cloud Labs.
+                                        </div>
+                                        <div>
+                                            - If you’re preparing for interviews, Educative is strongest for System Design and Coding Interview patterns.
+                                        </div>
+                                    </CardContent>
+                                </Card>
+
+                                <Card className="border-primary/20">
+                                    <CardHeader>
+                                        <CardTitle>Best deal (most users)</CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="text-sm text-muted-foreground space-y-3">
+                                        <div>- Annual (or longer) plans typically have the best discounts.</div>
+                                        <div className="flex flex-col gap-3 sm:flex-row">
+                                            <Button asChild>
+                                                <Link href="/coupons/educative">Get Educative coupons</Link>
+                                            </Button>
+                                            <Button asChild variant="outline">
+                                                <Link href="/coupons/educative/student-discount">Student discount</Link>
+                                            </Button>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </div>
+
+                            <div className="space-y-6">
+                                <h2 className="text-2xl font-bold">Plans breakdown (Standard vs Premium vs Premium Plus)</h2>
+                                <div className="grid gap-4 md:grid-cols-3">
+                                    <Card>
+                                        <CardHeader>
+                                            <CardTitle className="text-base">Standard</CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="text-sm text-muted-foreground space-y-2">
+                                            <div>- Unlimited access to Educative courses.</div>
+                                            <div>- Best for: self-paced learners who only need courses.</div>
+                                        </CardContent>
+                                    </Card>
+                                    <Card>
+                                        <CardHeader>
+                                            <CardTitle className="text-base">Premium</CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="text-sm text-muted-foreground space-y-2">
+                                            <div>- Everything in Standard.</div>
+                                            <div>- Adds: projects and personalized learning tools.</div>
+                                            <div>- Best for: interview prep + practical learning.</div>
+                                        </CardContent>
+                                    </Card>
+                                    <Card>
+                                        <CardHeader>
+                                            <CardTitle className="text-base">Premium Plus</CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="text-sm text-muted-foreground space-y-2">
+                                            <div>- Everything in Premium.</div>
+                                            <div>- Adds: Cloud Labs (hands-on cloud practice).</div>
+                                            <div>- Best for: learners who will actually use labs.</div>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                                <Card>
+                                    <CardHeader>
+                                        <CardTitle className="text-base">Shortcut: which plan should you buy?</CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="text-sm text-muted-foreground space-y-2">
+                                        <div>- If you want the best balance, start with Premium.</div>
+                                        <div>- If you’re cloud-focused, consider Premium Plus.</div>
+                                        <div>- If you only want reading + practice lessons, Standard can be enough.</div>
+                                    </CardContent>
+                                </Card>
+                            </div>
+
+                            <div className="space-y-6">
+                                <h2 className="text-2xl font-bold">Free trial (important)</h2>
+                                <Card>
+                                    <CardHeader>
+                                        <CardTitle>Try before you buy</CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="text-sm text-muted-foreground space-y-2">
+                                        <div>- Educative offers a free trial experience for many courses and hands-on features.</div>
+                                        <div>- Interview prep courses may be excluded from the free trial.</div>
+                                        <div>
+                                            - Recommendation: try the platform style first, then use a coupon for the plan you want.
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </div>
+
+                            <div className="space-y-6">
+                                <h2 className="text-2xl font-bold">Best Educative courses (high intent)</h2>
+                                <div className="grid gap-4 md:grid-cols-2">
+                                    <Card>
+                                        <CardHeader>
+                                            <CardTitle className="text-base">System Design</CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="text-sm text-muted-foreground space-y-3">
+                                            <div>Best for: engineers preparing for mid/senior interviews.</div>
+                                            <Button asChild variant="outline">
+                                                <Link href="/coupons/educative/system-design">System Design coupon page</Link>
+                                            </Button>
+                                        </CardContent>
+                                    </Card>
+                                    <Card>
+                                        <CardHeader>
+                                            <CardTitle className="text-base">Coding Interviews</CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="text-sm text-muted-foreground space-y-3">
+                                            <div>Best for: patterns-based prep and structured practice.</div>
+                                            <Button asChild variant="outline">
+                                                <Link href="/coupons/educative/coding-interview">Coding Interview coupon page</Link>
+                                            </Button>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            </div>
+
+                            <div className="space-y-4">
+                                <h2 className="text-2xl font-bold">FAQs</h2>
+                                <div className="space-y-4">
+                                    <div className="border rounded-lg p-4">
+                                        <h3 className="font-semibold">Is Educative good for System Design?</h3>
+                                        <p className="mt-2 text-sm text-muted-foreground">
+                                            Yes. Educative is well known for system design prep and structured explanations, and it works well if you prefer learning by reading + practicing.
+                                        </p>
+                                    </div>
+                                    <div className="border rounded-lg p-4">
+                                        <h3 className="font-semibold">Is Educative good for coding interview prep?</h3>
+                                        <p className="mt-2 text-sm text-muted-foreground">
+                                            Yes—especially for patterns-based prep. It’s best if you follow a consistent routine and practice deliberately.
+                                        </p>
+                                    </div>
+                                    <div className="border rounded-lg p-4">
+                                        <h3 className="font-semibold">Which plan is worth it?</h3>
+                                        <p className="mt-2 text-sm text-muted-foreground">
+                                            Premium is the best starting point for most job seekers. Premium Plus is only worth it if you’ll use Cloud Labs.
+                                        </p>
+                                    </div>
+                                    <div className="border rounded-lg p-4">
+                                        <h3 className="font-semibold">How can I get the best discount?</h3>
+                                        <p className="mt-2 text-sm text-muted-foreground">
+                                            Use our Educative coupon page to find the best live deal and compare annual vs monthly value.
+                                            <span> </span>
+                                            <Link href="/coupons/educative" className="underline">See Educative coupons</Link>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    )}
+
                     {/* Detailed Verdict */}
                     <div className="rounded-xl bg-muted p-8">
                         <h2 className="text-2xl font-bold mb-4">Our Verdict</h2>
