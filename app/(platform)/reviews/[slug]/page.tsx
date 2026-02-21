@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Check, X, Star, ExternalLink, ShieldCheck } from "lucide-react";
@@ -23,6 +24,39 @@ export function generateStaticParams() {
     }));
 }
 
+export async function generateMetadata(props: ReviewPageProps): Promise<Metadata> {
+    const params = await props.params;
+    const platform = getPlatformBySlug(params.slug);
+
+    if (!platform) {
+        return {};
+    }
+
+    const canonicalPath = `/reviews/${platform.slug}`;
+    const canonicalUrl = absoluteUrl(canonicalPath);
+    const title = `${platform.name} Review (2026)`;
+    const description = platform.longDescription;
+
+    return {
+        title,
+        description,
+        alternates: {
+            canonical: canonicalUrl,
+        },
+        openGraph: {
+            title,
+            description,
+            url: canonicalUrl,
+            type: "article",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title,
+            description,
+        },
+    };
+}
+
 export default async function ReviewPage(props: ReviewPageProps) {
     const params = await props.params;
     const platform = getPlatformBySlug(params.slug);
@@ -45,9 +79,51 @@ export default async function ReviewPage(props: ReviewPageProps) {
         ratingCount: platform.reviewCount,
     });
 
+    const educativeFaqJsonLd =
+        platform.slug === "educative"
+            ? {
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  mainEntity: [
+                      {
+                          "@type": "Question",
+                          name: "Is Educative good for System Design?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: "Yes. Educative is well known for system design prep and structured explanations, and it works well if you prefer learning by reading + practicing.",
+                          },
+                      },
+                      {
+                          "@type": "Question",
+                          name: "Is Educative good for coding interview prep?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: "Yes—especially for patterns-based prep. It’s best if you follow a consistent routine and practice deliberately.",
+                          },
+                      },
+                      {
+                          "@type": "Question",
+                          name: "Which Educative plan is worth it?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: "Premium is the best starting point for most job seekers. Premium Plus is only worth it if you’ll use Cloud Labs.",
+                          },
+                      },
+                      {
+                          "@type": "Question",
+                          name: "How can I get the best Educative discount?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: `See the latest verified deal on ${absoluteUrl("/coupons/educative")} and compare annual vs monthly value.`,
+                          },
+                      },
+                  ],
+              }
+            : null;
+
     return (
         <div className="container px-4 py-10 md:px-6 md:py-16 mx-auto">
-            <JsonLd data={[breadcrumbJsonLd, reviewJsonLd]} />
+            <JsonLd data={educativeFaqJsonLd ? [breadcrumbJsonLd, reviewJsonLd, educativeFaqJsonLd] : [breadcrumbJsonLd, reviewJsonLd]} />
             <div className="grid gap-10 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_350px]">
 
                 {/* Main Content */}
@@ -299,9 +375,17 @@ export default async function ReviewPage(props: ReviewPageProps) {
                             {platform.name} is best suited for <strong className="text-foreground">{platform.bestFor}</strong>.
                             With a rating of {platform.rating}/5, it stands out for its quality content and practical approach.
                         </p>
-                        <Button size="lg" className="w-full sm:w-auto">
-                            Visit {platform.name} Official Site <ExternalLink className="ml-2 h-4 w-4" />
-                        </Button>
+                        {platform.slug === "educative" ? (
+                            <Button size="lg" className="w-full sm:w-auto" asChild>
+                                <a href="/go/educative?src=review" target="_blank" rel="noopener noreferrer">
+                                    Visit {platform.name} Official Site <ExternalLink className="ml-2 h-4 w-4" />
+                                </a>
+                            </Button>
+                        ) : (
+                            <Button size="lg" className="w-full sm:w-auto" asChild>
+                                <Link href={`/coupons/${platform.couponSlug}`}>Get {platform.name} coupons</Link>
+                            </Button>
+                        )}
                     </div>
 
                     <CommentsPlaceholder />

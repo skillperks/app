@@ -53,7 +53,7 @@ export const educativeCourses: EducativeCourse[] = [
                 answer: "You can buy the course individually, but Unlimited is usually better value if you plan to take multiple Grokking courses.",
             },
         ],
-        affiliateLink: "https://www.educative.io/unlimited?aff=xy8B",
+        affiliateLink: "/go/educative?src=course",
     },
     {
         id: "grokking-coding-patterns",
@@ -83,7 +83,7 @@ export const educativeCourses: EducativeCourse[] = [
                 answer: "Explanations are language-agnostic. You can implement solutions in your preferred language.",
             },
         ],
-        affiliateLink: "https://www.educative.io/unlimited?aff=xy8B",
+        affiliateLink: "/go/educative?src=course",
     },
     {
         id: "grokking-ml",
@@ -113,7 +113,7 @@ export const educativeCourses: EducativeCourse[] = [
                 answer: "Yes, it introduces ML system design concepts and how to communicate design choices.",
             },
         ],
-        affiliateLink: "https://www.educative.io/unlimited?aff=xy8B",
+        affiliateLink: "/go/educative?src=course",
     },
     {
         id: "patterns-for-system-design",
@@ -139,7 +139,7 @@ export const educativeCourses: EducativeCourse[] = [
                 answer: "It overlaps, but it’s more about patterns used in production architecture than interview-style problem walkthroughs.",
             },
         ],
-        affiliateLink: "https://www.educative.io/unlimited?aff=xy8B",
+        affiliateLink: "/go/educative?src=course",
     },
 ];
 

@@ -64,7 +64,7 @@ export const platforms: Platform[] = [
             discount: "40% OFF",
             description: "Get 40% off annual plans",
             type: "link",
-            link: "https://www.educative.io/unlimited?aff=xy8B",
+            link: "/go/educative?src=coupon",
         },
         alternatives: [
             { name: "Exponent", slug: "exponent" },
