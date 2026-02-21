@@ -81,6 +81,22 @@ export default async function CouponPage(props: CouponPageProps) {
                         </Card>
                     )}
 
+                    {platform.slug === "educative" && (
+                        <Card className="border-primary/20">
+                            <CardHeader>
+                                <CardTitle className="text-lg">Educative student discount</CardTitle>
+                            </CardHeader>
+                            <CardContent className="text-sm text-muted-foreground">
+                                If you have a verified school email, you may qualify for student pricing on Educative.
+                                <div className="mt-4">
+                                    <Button asChild variant="outline">
+                                        <Link href="/coupons/educative/student-discount">See eligibility & steps</Link>
+                                    </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
+
                     {platform.slug === "exponent" && (
                         <Card className="border-primary/20">
                             <CardHeader>
@@ -204,7 +220,8 @@ export default async function CouponPage(props: CouponPageProps) {
                                     <Info className="h-4 w-4 text-primary" /> Is there a student discount?
                                 </h3>
                                 <p className="mt-2 text-sm text-muted-foreground">
-                                    Yes, many platforms offer student discounts. Check our dedicated student discount page for {platform.name}.
+                                    Yes, many platforms offer student discounts. Check our dedicated student discount page for {platform.name}.{" "}
+                                    <Link href={`/coupons/${platform.slug}/student-discount`} className="underline">View student discount</Link>
                                 </p>
                             </div>
                         </div>
