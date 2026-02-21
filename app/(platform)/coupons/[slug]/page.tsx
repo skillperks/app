@@ -119,6 +119,34 @@ export default async function CouponPage(props: CouponPageProps) {
                     text: `Some platforms offer student pricing. For ${platform.name}, see our student discount details at ${absoluteUrl(`/coupons/${platform.slug}/student-discount`)}.`,
                 },
             },
+            ...(platform.slug === "educative"
+                ? [
+                      {
+                          "@type": "Question",
+                          name: "Can I stack multiple coupon codes?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: "In most cases, only one coupon can be applied per order. If a code doesn’t work, try a different active deal.",
+                          },
+                      },
+                      {
+                          "@type": "Question",
+                          name: "Do discounts work on monthly plans?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: "Most of the best discounts are tied to annual (or longer) plans. Monthly plans may not qualify depending on the promotion.",
+                          },
+                      },
+                      {
+                          "@type": "Question",
+                          name: "Can I try Educative for free?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: "Educative often offers a free trial or limited free access for new users. See the offer details on the official site during checkout.",
+                          },
+                      },
+                  ]
+                : []),
         ],
     };
 
@@ -234,7 +262,7 @@ export default async function CouponPage(props: CouponPageProps) {
                         </CardContent>
                         <CardFooter className="bg-muted/50 pt-4 flex justify-between items-center text-xs text-muted-foreground">
                             <span>Last used: 12 minutes ago</span>
-                            <Link href="#" className="underline">Terms & Conditions</Link>
+                            <Link href="/disclosure" className="underline">Terms & Conditions</Link>
                         </CardFooter>
                     </Card>
 
@@ -299,6 +327,34 @@ export default async function CouponPage(props: CouponPageProps) {
                                     <Link href={`/coupons/${platform.slug}/student-discount`} className="underline">View student discount</Link>
                                 </p>
                             </div>
+                            {platform.slug === "educative" && (
+                                <>
+                                    <div className="border rounded-lg p-4">
+                                        <h3 className="font-semibold flex items-center gap-2">
+                                            <Info className="h-4 w-4 text-primary" /> Can I stack multiple coupon codes?
+                                        </h3>
+                                        <p className="mt-2 text-sm text-muted-foreground">
+                                            Usually no—only one coupon can be applied per purchase. If a code doesn’t work, try a different active deal.
+                                        </p>
+                                    </div>
+                                    <div className="border rounded-lg p-4">
+                                        <h3 className="font-semibold flex items-center gap-2">
+                                            <Info className="h-4 w-4 text-primary" /> Do discounts work on monthly plans?
+                                        </h3>
+                                        <p className="mt-2 text-sm text-muted-foreground">
+                                            The best discounts typically apply to annual (or longer) plans. Monthly plans may not qualify depending on the promotion.
+                                        </p>
+                                    </div>
+                                    <div className="border rounded-lg p-4">
+                                        <h3 className="font-semibold flex items-center gap-2">
+                                            <Info className="h-4 w-4 text-primary" /> Can I try Educative for free?
+                                        </h3>
+                                        <p className="mt-2 text-sm text-muted-foreground">
+                                            Educative often offers a free trial or limited free access for new users. Check the official site during signup.
+                                        </p>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
 
@@ -313,8 +369,16 @@ export default async function CouponPage(props: CouponPageProps) {
                                 <CardTitle>Platform Details</CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-4">
-                                <div className="aspect-video bg-muted rounded-md flex items-center justify-center text-muted-foreground mb-4">
-                                    Platform Preview
+                                <div className="rounded-md border bg-muted/30 p-4 mb-4">
+                                    <div className="flex items-center gap-3">
+                                        <div className={`h-10 w-10 rounded-lg ${platform.logoColor} flex items-center justify-center text-white font-bold shadow-sm`}>
+                                            {platform.name[0]}
+                                        </div>
+                                        <div className="min-w-0">
+                                            <div className="text-sm font-semibold">{platform.name}</div>
+                                            <div className="text-xs text-muted-foreground">Rating: {platform.rating}/5</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <p className="text-sm text-muted-foreground">
                                     {platform.description}
