@@ -1,0 +1,29 @@
+{
+    "metadata": {
+        "last_updated": "2026-02-07",
+        "total_keywords": 45,
+        "pages_tracked": 4
+    },
+    "keywords": {
+        "educative": {
+            "primary": "educative coupon",
+            "volume_estimate": "high",
+            "mapped_file": "research/educative/keyword-mapping.json"
+        },
+        "bytebytego": {
+            "primary": "bytebytego discount",
+            "volume_estimate": "medium",
+            "mapped_file": "research/bytebytego/keyword-mapping.json"
+        },
+        "datacamp": {
+            "primary": "datacamp free trial",
+            "volume_estimate": "high",
+            "mapped_file": "research/datacamp/keyword-mapping.json"
+        },
+        "homepage": {
+            "primary": "tech course deals",
+            "volume_estimate": "medium",
+            "mapped_file": "research/homepage/keyword-mapping.json"
+        }
+    }
+}

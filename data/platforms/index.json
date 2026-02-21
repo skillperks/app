@@ -1,0 +1,42 @@
+[
+  {
+    "id": "educative",
+    "name": "Educative",
+    "slug": "educative",
+    "logoUrl": "/logos/educative.png",
+    "websiteUrl": "https://www.educative.io",
+    "affiliateBaseUrl": "https://www.educative.io/unlimited?aff=xy8B",
+    "primaryColor": "#2563eb",
+    "tagline": "Text-based interactive courses for developers"
+  },
+  {
+    "id": "bytebytego",
+    "name": "ByteByteGo",
+    "slug": "bytebytego",
+    "logoUrl": "/logos/bytebytego.png",
+    "websiteUrl": "https://bytebytego.com",
+    "affiliateBaseUrl": "https://bytebytego.com?aff=skillperks",
+    "primaryColor": "#7c3aed",
+    "tagline": "Diagram-first system design learning"
+  },
+  {
+    "id": "exponent",
+    "name": "Exponent",
+    "slug": "exponent",
+    "logoUrl": "/logos/exponent.png",
+    "websiteUrl": "https://www.tryexponent.com",
+    "affiliateBaseUrl": "https://www.tryexponent.com/?ref=sp20",
+    "primaryColor": "#4f46e5",
+    "tagline": "System design and PM interview prep"
+  },
+  {
+    "id": "datacamp",
+    "name": "DataCamp",
+    "slug": "datacamp",
+    "logoUrl": "/logos/datacamp.png",
+    "websiteUrl": "https://www.datacamp.com",
+    "affiliateBaseUrl": "https://datacamp.pxf.io/skillup",
+    "primaryColor": "#16a34a",
+    "tagline": "Learn Python, SQL, and Data Science"
+  }
+]

@@ -1,0 +1,145 @@
+{
+    "tool_pages": {
+        "exponent-review": {
+            "primary_keywords": [
+                "exponent system design review",
+                "tryexponent review",
+                "exponent interview prep review",
+                "is exponent worth it",
+                "exponent pm interview course"
+            ],
+            "secondary_keywords": [
+                "exponent pricing",
+                "exponent vs algoexpert",
+                "exponent system design interview course",
+                "exponent product management course reviews",
+                "exponent mock interview review"
+            ],
+            "long_tail_keywords": [
+                "exponent system design vs bytebytego",
+                "does exponent help with google interviews",
+                "tryexponent system design pdf",
+                "exponent refund policy",
+                "best system design interview prep 2026"
+            ],
+            "search_volume": "medium",
+            "search_volume_count": "5000/month",
+            "keyword_difficulty": "25/100",
+            "competition": "low-medium",
+            "priority": "high",
+            "target_url": "/reviews/exponent/",
+            "h1_keyword": "Exponent Review 2026: The Ultimate Tech Interview Prep?",
+            "meta_title": "Exponent Review 2026 - System Design & PM Interview Prep",
+            "meta_description": "Is Exponent (TryExponent) worth it for FAANG interview prep? We reviewed their System Design and Product Management courses. See the pros and cons.",
+            "content_focus": "Interview prep effectiveness, peer mock interviews, system design course quality",
+            "serp_features": [
+                "video",
+                "people_also_ask"
+            ],
+            "competitors": [
+                "bytebytego",
+                "algoexpert",
+                "interview bit",
+                "tech interview handbook"
+            ]
+        },
+        "exponent-coupon": {
+            "primary_keywords": [
+                "tryexponent promo code",
+                "exponent promo code",
+                "exponent coupon code",
+                "exponent discount",
+                "exponent referral code",
+                "exponent student discount"
+            ],
+            "secondary_keywords": [
+                "exponent annual plan discount",
+                "exponent black friday",
+                "exponent interview prep sale",
+                "save on exponent",
+                "exponent lifetime deal"
+            ],
+            "long_tail_keywords": [
+                "tryexponent free trial",
+                "how to get exponent cheap",
+                "exponent monthly vs annual",
+                "exponent team pricing",
+                "exponent renewal discount"
+            ],
+            "search_volume": "medium",
+            "search_volume_count": "2000/month",
+            "keyword_difficulty": "15/100",
+            "competition": "low",
+            "priority": "medium",
+            "target_url": "/coupons/exponent-promo-code/",
+            "h1_keyword": "Exponent Promo Code & Discounts (Verified 2026)",
+            "meta_title": "Exponent Promo Code 2026 - Save on Interview Prep",
+            "meta_description": "Exclusive Exponent (TryExponent) discount codes. Save on System Design and PM Interview courses. Verified active coupons.",
+            "content_focus": "Active discounts, membership value analysis",
+            "serp_features": [
+                "rich_snippet_offer"
+            ],
+            "competitors": [
+                "retailmenot"
+            ]
+        }
+    },
+    "blog_content": {
+        "educational": [
+            {
+                "keyword": "how to prepare for system design interview",
+                "search_volume": "8000/month",
+                "difficulty": "55/100",
+                "priority": "critical",
+                "target_url": "/blog/system-design-interview-prep/",
+                "content_type": "guide"
+            },
+            {
+                "keyword": "product management interview questions",
+                "search_volume": "12000/month",
+                "difficulty": "65/100",
+                "priority": "high",
+                "target_url": "/blog/pm-interview-questions/",
+                "content_type": "listicle"
+            }
+        ],
+        "how_to": [
+            {
+                "keyword": "how to ace google system design interview",
+                "search_volume": "800/month",
+                "difficulty": "40/100",
+                "priority": "medium",
+                "target_url": "/blog/ace-google-system-design/",
+                "content_type": "tutorial"
+            }
+        ]
+    },
+    "comparison_queries": [
+        {
+            "keyword": "exponent vs bytebytego",
+            "search_volume": "1500/month",
+            "difficulty": "20/100",
+            "priority": "high",
+            "target_url": "/comparisons/exponent-vs-bytebytego/",
+            "content_type": "comparison_article"
+        },
+        {
+            "keyword": "exponent vs grokking the system design interview",
+            "search_volume": "600/month",
+            "difficulty": "15/100",
+            "priority": "medium",
+            "target_url": "/comparisons/exponent-vs-grokking/",
+            "content_type": "comparison_article"
+        }
+    ],
+    "metadata": {
+        "research_date": "2026-02-11",
+        "tools_used": [
+            "Google Keyword Planner",
+            "Ahrefs"
+        ],
+        "total_keywords": 35,
+        "high_priority_count": 8,
+        "notes": "Growth in PM and System Design niches. Direct competitor to ByteByteGo."
+    }
+}

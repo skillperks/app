@@ -1,0 +1,158 @@
+{
+    "tool_pages": {
+        "datacamp-review": {
+            "primary_keywords": [
+                "datacamp review 2026",
+                "is datacamp worth it",
+                "datacamp data science review",
+                "datacamp python course review",
+                "datacamp certificate value"
+            ],
+            "secondary_keywords": [
+                "datacamp pricing",
+                "datacamp free vs paid",
+                "datacamp career track review",
+                "datacamp projects review",
+                "datacamp for business"
+            ],
+            "long_tail_keywords": [
+                "datacamp vs codecademy for python",
+                "can you get a job with datacamp certificate",
+                "how long does it take to complete datacamp data scientist track",
+                "datacamp refund policy",
+                "best data science bootcamps online"
+            ],
+            "search_volume": "high",
+            "search_volume_count": "15000/month",
+            "keyword_difficulty": "45/100",
+            "competition": "medium",
+            "priority": "critical",
+            "target_url": "/reviews/datacamp/",
+            "h1_keyword": "DataCamp Review 2026: Is It Worth It for Data Science?",
+            "meta_title": "DataCamp Review 2026 - Pricing, Courses & Certificate Value",
+            "meta_description": "Is DataCamp worth it in 2026? We tested the Data Scientist career track, Python courses, and certifications. Read our honest review before you buy.",
+            "content_focus": "In-depth platform testing, career track analysis, certification validity",
+            "serp_features": [
+                "featured_snippet",
+                "people_also_ask",
+                "video_carousel"
+            ],
+            "competitors": [
+                "pc mag",
+                "course report",
+                "g2",
+                "dataquest",
+                "coursera"
+            ]
+        },
+        "datacamp-coupon": {
+            "primary_keywords": [
+                "datacamp coupon code",
+                "datacamp student discount",
+                "datacamp discount",
+                "datacamp sale",
+                "datacamp promo code 2026"
+            ],
+            "secondary_keywords": [
+                "datacamp black friday",
+                "datacamp cyber monday",
+                "datacamp annual subscription discount",
+                "datacamp 60% off",
+                "datacamp referral code"
+            ],
+            "long_tail_keywords": [
+                "how to get datacamp for free",
+                "datacamp github student pack",
+                "active datacamp promotions",
+                "datacamp monthly vs yearly cost",
+                "datacamp free trial length"
+            ],
+            "search_volume": "high",
+            "search_volume_count": "8000/month",
+            "keyword_difficulty": "25/100",
+            "competition": "medium",
+            "priority": "critical",
+            "target_url": "/coupons/datacamp-coupon-code/",
+            "h1_keyword": "DataCamp Coupon Code & Discounts (Verified 2026)",
+            "meta_title": "DataCamp Coupon Code 2026 - Save 60% on Data Science Courses",
+            "meta_description": "Active DataCamp discount codes and student deals for 2026. Save up to 60% on annual subscriptions. Verified daily.",
+            "content_focus": "Verified discounts, step-by-step redemption, best time to buy",
+            "serp_features": [
+                "rich_snippet_offer",
+                "faq"
+            ],
+            "competitors": [
+                "retailmenot",
+                "groupon",
+                "insider coupons"
+            ]
+        }
+    },
+    "blog_content": {
+        "educational": [
+            {
+                "keyword": "how to learn data science from scratch",
+                "search_volume": "5000/month",
+                "difficulty": "60/100",
+                "priority": "high",
+                "target_url": "/blog/how-to-learn-data-science/",
+                "content_type": "guide"
+            },
+            {
+                "keyword": "python vs r for data science",
+                "search_volume": "4000/month",
+                "difficulty": "30/100",
+                "priority": "medium",
+                "target_url": "/blog/python-vs-r-data-science/",
+                "content_type": "comparison"
+            }
+        ],
+        "how_to": [
+            {
+                "keyword": "how to add datacamp certification to linkedin",
+                "search_volume": "500/month",
+                "difficulty": "10/100",
+                "priority": "low",
+                "target_url": "/blog/add-datacamp-cert-linkedin/",
+                "content_type": "tutorial"
+            }
+        ]
+    },
+    "comparison_queries": [
+        {
+            "keyword": "datacamp vs dataquest",
+            "search_volume": "2500/month",
+            "difficulty": "35/100",
+            "priority": "high",
+            "target_url": "/comparisons/datacamp-vs-dataquest/",
+            "content_type": "comparison_article"
+        },
+        {
+            "keyword": "datacamp vs coursera",
+            "search_volume": "4000/month",
+            "difficulty": "50/100",
+            "priority": "high",
+            "target_url": "/comparisons/datacamp-vs-coursera/",
+            "content_type": "comparison_article"
+        },
+        {
+            "keyword": "educative vs datacamp",
+            "search_volume": "500/month",
+            "difficulty": "20/100",
+            "priority": "medium",
+            "target_url": "/comparisons/educative-vs-datacamp/",
+            "content_type": "comparison_article"
+        }
+    ],
+    "metadata": {
+        "research_date": "2026-02-11",
+        "tools_used": [
+            "Google Keyword Planner",
+            "Ahrefs",
+            "Google Search Console"
+        ],
+        "total_keywords": 45,
+        "high_priority_count": 15,
+        "notes": "Strong intent for 'worth it' and comparison keywords. Discounts are a major driver."
+    }
+}

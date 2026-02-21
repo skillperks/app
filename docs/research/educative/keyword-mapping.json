@@ -1,0 +1,53 @@
+{
+    "platform": "educative",
+    "target_urls": {
+        "coupon": "/coupons/educative-coupon-code/",
+        "review": "/reviews/educative/"
+    },
+    "primary_terms": {
+        "coupon": "coupon code",
+        "review": "review"
+    },
+    "keywords": {
+        "coupons": [
+            "educative coupon code",
+            "educative coupon 2026",
+            "educative discount code",
+            "educative promo code",
+            "educative black friday deal"
+        ],
+        "reviews": [
+            "educative review",
+            "is educative worth it",
+            "educative io review 2026",
+            "educative unlimited review"
+        ],
+        "comparisons": [
+            "educative vs bytebytego",
+            "educative vs leetcode",
+            "educative vs udemy system design"
+        ]
+    },
+    "content_strategy": {
+        "h1_coupon": "Educative Coupon Code & Discounts (Verified 2026)",
+        "h1_review": "Educative Review 2026: Is It Worth It for System Design?",
+        "meta_description_coupon": "Save up to 40% on Educative subscriptions with our verified coupons. Exclusive discounts for Educative Unlimited & courses.",
+        "meta_description_review": "Comprehensive Educative review for developers. We dive into course quality, pricing, and system design content to help you choose."
+    },
+    "faq_targets": {
+        "coupon": [
+            "How do I apply an Educative coupon code?",
+            "Do Educative coupon codes work for existing users?",
+            "Can I combine an Educative promo code with regional discounts?",
+            "Is there an Educative student discount?",
+            "Does Educative have a free trial?",
+            "What if my Educative coupon code is not working?"
+        ],
+        "review": [
+            "Is Educative worth it for system design interview prep?",
+            "Is Educative better than video courses for developers?",
+            "What is Educative Unlimited and what does it include?",
+            "Does Educative help with coding interviews?"
+        ]
+    }
+}
