@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { platforms } from "@/lib/data";
@@ -22,7 +22,7 @@ function normalize(s: string) {
   return s.toLowerCase().trim();
 }
 
-export default function SearchPage() {
+function SearchPageClient() {
   const params = useSearchParams();
   const initial = params.get("q") ?? "";
   const [q, setQ] = useState(initial);
@@ -88,5 +88,13 @@ export default function SearchPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div className="container px-4 py-10 md:px-6 md:py-16 mx-auto" />}>
+      <SearchPageClient />
+    </Suspense>
   );
 }

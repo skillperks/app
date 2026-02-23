@@ -32,8 +32,15 @@ export async function POST(req: Request) {
       cache: "no-store",
     });
 
-    const data = await res.json().catch(() => null);
-    const success = Boolean(data && typeof data === "object" && "success" in data && (data as any).success);
+    const data: unknown = await res.json().catch(() => null);
+    const success =
+      Boolean(
+        data &&
+          typeof data === "object" &&
+          "success" in data &&
+          typeof (data as { success?: unknown }).success === "boolean" &&
+          (data as { success: boolean }).success
+      );
 
     if (!res.ok || !success) {
       return NextResponse.json(

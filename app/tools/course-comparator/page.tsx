@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import coursesData from "@/data/courses/index.json";
 import platformsData from "@/data/platforms/index.json";
 
@@ -21,9 +23,11 @@ export function generateMetadata({
 
 export default function CourseComparatorPage() {
   return (
-    <CourseComparatorClient
-      courses={coursesData as unknown as Course[]}
-      platforms={platformsData as unknown as PlatformMeta[]}
-    />
+    <Suspense fallback={null}>
+      <CourseComparatorClient
+        courses={coursesData as unknown as Course[]}
+        platforms={platformsData as unknown as PlatformMeta[]}
+      />
+    </Suspense>
   );
 }
