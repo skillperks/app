@@ -5,14 +5,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const comparisons = [
-  { label: "Educative vs. Pluralsight", href: "/comparisons/educative-vs-pluralsight" },
-  { label: "ByteByteGo vs. SystemsExpert", href: "/comparisons/bytebytego-vs-systemsexpert" },
-  { label: "LeetCode vs. AlgoExpert", href: "/comparisons/leetcode-vs-algoexpert" },
+  { label: "Educative vs. DataCamp", href: "/comparisons/educative-vs-datacamp" },
+  { label: "Educative vs. Exponent", href: "/comparisons/educative-vs-exponent" },
+  { label: "DataCamp vs. Exponent", href: "/comparisons/datacamp-vs-exponent" },
 ];
 
 export function LearningRoadmap() {
   return (
-    <section className="relative overflow-hidden border-y border-slate-800/80 bg-slate-900/30 py-28 lg:py-28">
+    <section className="relative py-28 lg:py-28">
+      <div className="pointer-events-none absolute inset-[-30%] opacity-30">
+        <div className="absolute -top-[25%] -left-[10%] h-[55%] w-[55%] rounded-full bg-purple-600/35 blur-[160px]" />
+        <div className="absolute -bottom-[25%] -right-[10%] h-[55%] w-[55%] rounded-full bg-cyan-600/30 blur-[160px]" />
+      </div>
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-20">
           <div>

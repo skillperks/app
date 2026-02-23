@@ -5,8 +5,8 @@ import { Badge } from "@/components/ui/badge";
 
 export function Hero() {
     return (
-        <section className="relative overflow-hidden pt-24 pb-16 md:pt-28 lg:pt-32 lg:pb-24">
-            <div className="pointer-events-none absolute inset-0 opacity-30">
+        <section className="relative pt-24 pb-16 md:pt-28 lg:pt-32 lg:pb-24">
+            <div className="pointer-events-none absolute inset-[-30%] opacity-30">
                 <div className="absolute -top-[20%] -left-[10%] h-[50%] w-[50%] rounded-full bg-purple-600/40 blur-[140px]" />
                 <div className="absolute -bottom-[20%] -right-[10%] h-[50%] w-[50%] rounded-full bg-cyan-600/40 blur-[140px]" />
             </div>
@@ -18,7 +18,7 @@ export function Hero() {
                     </div>
                     <h1 className="text-5xl font-extrabold tracking-tight leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl">
                         Master Your{" "}
-                        <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Tech Stack</span>
+                        <span className="text-accent-gradient">Tech Stack</span>
                         <br />
                         Through Data
                     </h1>
@@ -35,7 +35,7 @@ export function Hero() {
                                 />
                             </div>
                             <Button
-                                className="w-full rounded-2xl bg-gradient-to-r from-purple-600 to-purple-700 px-10 py-5 font-bold shadow-xl shadow-purple-500/20 hover:brightness-110 active:scale-[0.98] sm:w-auto"
+                                className="btn-accent-gradient w-full rounded-2xl px-10 py-5 font-bold shadow-xl shadow-purple-500/15 hover:brightness-110 active:scale-[0.98] sm:w-auto"
                                 asChild
                             >
                                 <Link href="/browse">

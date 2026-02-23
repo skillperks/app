@@ -24,12 +24,13 @@ const footerLinks = {
 
 export function Footer() {
     return (
-        <footer className="border-t border-border/60 bg-background/30 backdrop-blur">
+        <footer className="border-t border-white/5 bg-slate-950/10 backdrop-blur-xl">
             <div className="mx-auto container px-4 py-12 md:px-6 lg:py-16">
                 <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
                     <div className="col-span-2 lg:col-span-2">
                         <Link href="/" className="mb-4 flex items-center space-x-2">
-                            <span className="text-xl font-bold tracking-tight">SkillPerks</span>
+                            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-cyan-500 shadow-lg shadow-cyan-500/15" />
+                            <span className="text-sm font-semibold tracking-tight">SkillPerks</span>
                         </Link>
                         <p className="mt-4 max-w-xs text-sm text-muted-foreground">
                             Empowering developers to make informed decisions about online learning. Verified coupons, expert reviews, and smart comparisons.
@@ -100,7 +101,7 @@ export function Footer() {
                         </ul>
                     </div>
                 </div>
-                <div className="mt-12 border-t border-border/60 pt-8">
+                <div className="mt-12 border-t border-white/5 pt-8">
                     <p className="text-center text-xs text-muted-foreground">
                         &copy; {new Date().getFullYear()} SkillPerks. All rights reserved.
                     </p>
