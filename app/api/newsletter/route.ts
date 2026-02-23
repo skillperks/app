@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
-const GOOGLE_SHEETS_NEWSLETTER_URL =
-  "https://script.google.com/macros/s/AKfycbx6B3mgnxY7-MNSTF2hou1AXGEck5DEJdT_Q8mbudmd7Honfu_jbGY4RK_DeNPBo07D/exec";
+const GOOGLE_SHEETS_NEWSLETTER_URL = process.env.GOOGLE_SHEETS_NEWSLETTER_URL;
 
 export async function GET() {
   return NextResponse.json({ ok: true });
@@ -13,6 +12,13 @@ export async function POST(req: Request) {
   const sourceFromBody = typeof body?.source === "string" ? body.source.trim() : "";
   const referer = req.headers.get("referer") ?? "";
   const source = sourceFromBody || referer || "unknown";
+
+  if (!GOOGLE_SHEETS_NEWSLETTER_URL) {
+    return NextResponse.json(
+      { ok: false, error: "GOOGLE_SHEETS_NEWSLETTER_URL is not configured" },
+      { status: 500 }
+    );
+  }
 
   if (!email || !email.includes("@")) {
     return NextResponse.json({ ok: false }, { status: 400 });
