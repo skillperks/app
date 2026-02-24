@@ -1,3 +1,5 @@
+import { buildGoLink } from "@/lib/affiliate-links";
+
 export interface DataCampCourse {
     id: string;
     slug: string;
@@ -41,7 +43,11 @@ export const datacampCourses: DataCampCourse[] = [
                 answer: "Yes—this is one of DataCamp’s most beginner-friendly courses and assumes no prior programming background.",
             },
         ],
-        affiliateLink: "https://datacamp.pxf.io/skillup",
+        affiliateLink: buildGoLink({
+            to: "https://datacamp.pxf.io/skillup",
+            merchant: "datacamp",
+            placement: "course",
+        }),
     },
     {
         id: "sql-fundamentals",
@@ -67,7 +73,11 @@ export const datacampCourses: DataCampCourse[] = [
                 answer: "No—DataCamp runs everything in the browser, so you can practice immediately.",
             },
         ],
-        affiliateLink: "https://datacamp.pxf.io/skillup",
+        affiliateLink: buildGoLink({
+            to: "https://datacamp.pxf.io/skillup",
+            merchant: "datacamp",
+            placement: "course",
+        }),
     },
     {
         id: "pandas",
@@ -93,7 +103,11 @@ export const datacampCourses: DataCampCourse[] = [
                 answer: "It’s a strong foundation. You’ll be able to clean/join/aggregate most common datasets after finishing and practicing.",
             },
         ],
-        affiliateLink: "https://datacamp.pxf.io/skillup",
+        affiliateLink: buildGoLink({
+            to: "https://datacamp.pxf.io/skillup",
+            merchant: "datacamp",
+            placement: "course",
+        }),
     },
 ];
 

@@ -1,3 +1,5 @@
+import { buildGoLink } from "@/lib/affiliate-links";
+
 export interface Coupon {
     code?: string;
     discount: string;
@@ -103,7 +105,11 @@ export const platforms: Platform[] = [
             discount: "10% OFF",
             description: "Save on your first year",
             type: "link",
-            link: "https://www.tryexponent.com/?ref=sp20",
+            link: buildGoLink({
+                to: "https://www.tryexponent.com/?ref=sp20",
+                merchant: "exponent",
+                placement: "coupon",
+            }),
         },
         alternatives: [
             { name: "Educative", slug: "educative" },
@@ -142,7 +148,11 @@ export const platforms: Platform[] = [
             discount: "60% OFF",
             description: "Huge savings on annual plan",
             type: "link",
-            link: "https://datacamp.pxf.io/skillup",
+            link: buildGoLink({
+                to: "https://datacamp.pxf.io/skillup",
+                merchant: "datacamp",
+                placement: "coupon",
+            }),
         },
         alternatives: [
             { name: "Educative", slug: "educative" },
