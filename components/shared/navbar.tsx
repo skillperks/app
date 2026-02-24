@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Menu, Search } from "lucide-react";
 
+import { CourseDiscountBanner } from "@/components/shared/course-discount-banner";
 import { Button } from "@/components/ui/button";
 import {
     Sheet,
@@ -27,6 +28,29 @@ export function Navbar() {
     const router = useRouter();
     const [query, setQuery] = useState("");
 
+    const promoPlatform = (() => {
+        if (!pathname) return null;
+
+        if (pathname.startsWith("/courses/")) {
+            const parts = pathname.split("/").filter(Boolean);
+            if (parts.length < 2) return null;
+            const candidate = parts[1];
+            return candidate === "datacamp" || candidate === "educative" || candidate === "exponent"
+                ? candidate
+                : null;
+        }
+
+        if (pathname.startsWith("/coupons/")) {
+            const lower = pathname.toLowerCase();
+            if (lower.includes("datacamp")) return "datacamp";
+            if (lower.includes("educative")) return "educative";
+            if (lower.includes("exponent")) return "exponent";
+            return null;
+        }
+
+        return null;
+    })();
+
     const onSearch = (e: React.FormEvent) => {
         e.preventDefault();
         const q = query.trim();
@@ -34,8 +58,12 @@ export function Navbar() {
     };
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-background/35 backdrop-blur-xl">
-            <div className="container mx-auto flex h-16 items-center gap-6 px-4 md:px-6">
+        <div className="sticky top-0 z-50 w-full">
+            {promoPlatform ? (
+                <CourseDiscountBanner platformSlug={promoPlatform} />
+            ) : null}
+            <header className="w-full border-b border-white/5 bg-background/35 backdrop-blur-xl">
+                <div className="container mx-auto flex h-16 items-center gap-6 px-4 md:px-6">
                 <Link href="/" className="flex items-center gap-2 shrink-0">
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-cyan-500 shadow-lg shadow-cyan-500/15" />
                     <span className="text-sm font-semibold tracking-tight">SkillPerks</span>
@@ -106,7 +134,8 @@ export function Navbar() {
                         </div>
                     </SheetContent>
                 </Sheet>
-            </div>
-        </header>
+                </div>
+            </header>
+        </div>
     );
 }
