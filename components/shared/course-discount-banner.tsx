@@ -15,7 +15,7 @@ export function CourseDiscountBanner({
   const dealHref = platform.activeCoupon.link;
 
   return (
-    <div className="w-full border-b border-blue-200/10 bg-blue-600/85 shadow-[0_10px_30px_-18px_rgba(37,99,235,0.95)] backdrop-blur-xl">
+    <div className="w-full border-b border-emerald-200/10 bg-emerald-600/85 shadow-[0_10px_30px_-18px_rgba(16,185,129,0.95)] backdrop-blur-xl">
       <div className="container mx-auto flex h-10 items-center px-3 md:px-6">
         <div className="relative w-full">
           <div className="pointer-events-none absolute inset-0 hidden md:block bg-[repeating-linear-gradient(135deg,rgba(255,255,255,0.10)_0,rgba(255,255,255,0.10)_10px,rgba(255,255,255,0.04)_10px,rgba(255,255,255,0.04)_20px)] opacity-30" />

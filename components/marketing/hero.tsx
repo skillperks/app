@@ -14,7 +14,7 @@ export function Hero() {
                 <div className="mx-auto max-w-3xl text-center">
                     <div className="mb-10 inline-flex items-center rounded-full border border-slate-700 bg-slate-800/80 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-cyan-400">
                         <span className="mr-2.5 inline-flex h-2 w-2 animate-pulse rounded-full bg-cyan-400" />
-                        Now Analyzing 50+ Learning Ecosystems
+                        Now Analyzing Learning Ecosystems
                     </div>
                     <h1 className="text-5xl font-extrabold tracking-tight leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl">
                         Master Your{" "}
@@ -30,7 +30,7 @@ export function Hero() {
                             <div className="relative w-full flex-1">
                                 <Search className="pointer-events-none absolute left-6 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
                                 <input
-                                    placeholder="Find your next course..."
+                                    placeholder="Find your next course at best price..."
                                     className="block w-full rounded-2xl border border-slate-700 bg-slate-900/60 py-5 pl-16 pr-8 text-lg outline-none transition-all placeholder:text-slate-600 focus:ring-2 focus:ring-cyan-500"
                                 />
                             </div>

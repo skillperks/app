@@ -123,10 +123,10 @@ export default async function CouponPage(props: CouponPageProps) {
                 ? [
                       {
                           "@type": "Question",
-                          name: "Which Educative plan is best (Standard vs Premium vs Premium Plus)?",
+                          name: "What is Educative Unlimited and what does it include?",
                           acceptedAnswer: {
                               "@type": "Answer",
-                              text: "Standard is best for hands-on courses, Premium adds projects + interview prep, and Premium Plus adds cloud labs. If you’re preparing for interviews, Premium is usually the best value.",
+                              text: "Educative Unlimited is a hands-on, text-based learning platform where you practice coding in the browser. It includes access to Educative’s course library plus projects, cloud labs, and personalized learning tools like AI Mock Interviews.",
                           },
                       },
                       {
@@ -150,7 +150,15 @@ export default async function CouponPage(props: CouponPageProps) {
                           name: "Can I try Educative for free?",
                           acceptedAnswer: {
                               "@type": "Answer",
-                              text: "Educative often offers a free trial or limited free access for new users. See the offer details on the official site during checkout.",
+                              text: "Educative offers a few interactive free courses. For trial/limited access details, confirm the current offer on Educative’s official site.",
+                          },
+                      },
+                      {
+                          "@type": "Question",
+                          name: "Can I cancel Educative Unlimited?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: "You can cancel auto-renewal through your account. If you cancel during the subscription period, you keep access until the end of the paid period; no refunds are issued.",
                           },
                       },
                       {
@@ -159,6 +167,34 @@ export default async function CouponPage(props: CouponPageProps) {
                           acceptedAnswer: {
                               "@type": "Answer",
                               text: `Yes. Start with our topic pages: ${absoluteUrl("/coupons/educative/system-design")} and ${absoluteUrl("/coupons/educative/coding-interview")} for the best deal + the right course path.`,
+                          },
+                      },
+                  ]
+                : []),
+            ...(platform.slug === "exponent"
+                ? [
+                      {
+                          "@type": "Question",
+                          name: "Does Exponent have a free plan?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: "Yes. Exponent offers a free tier so you can try the platform before upgrading.",
+                          },
+                      },
+                      {
+                          "@type": "Question",
+                          name: "Is Exponent annual cheaper than monthly?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: "Usually, annual billing offers the best value. Check the current pricing and discounts on Exponent’s official site during checkout.",
+                          },
+                      },
+                      {
+                          "@type": "Question",
+                          name: "What does Exponent membership include?",
+                          acceptedAnswer: {
+                              "@type": "Answer",
+                              text: "Exponent is an interview prep platform with role-based courses and practice resources. Paid membership typically unlocks the full member experience, such as expanded course access and additional practice/community features.",
                           },
                       },
                   ]
@@ -266,6 +302,32 @@ export default async function CouponPage(props: CouponPageProps) {
                                         <Link href="/courses/exponent/">Browse Exponent courses</Link>
                                     </Button>
                                 </div>
+                            </CardContent>
+                        </Card>
+                    )}
+
+                    {platform.slug === "exponent" && (
+                        <Card className="border-primary/20">
+                            <CardHeader>
+                                <CardTitle className="text-lg">Best ways to save on Exponent</CardTitle>
+                            </CardHeader>
+                            <CardContent className="text-sm text-muted-foreground space-y-2">
+                                <div>- If you’re serious about prep, annual billing is usually the best value.</div>
+                                <div>- If you’re unsure, start with the free tier to test the platform first.</div>
+                                <div>- Use the latest promo link below, then verify the final price at checkout.</div>
+                            </CardContent>
+                        </Card>
+                    )}
+
+                    {platform.slug === "exponent" && (
+                        <Card className="border-primary/20">
+                            <CardHeader>
+                                <CardTitle className="text-lg">What you get with Exponent</CardTitle>
+                            </CardHeader>
+                            <CardContent className="text-sm text-muted-foreground space-y-2">
+                                <div>- Role-based interview prep content and practice resources.</div>
+                                <div>- Membership can unlock more content and features beyond the free tier.</div>
+                                <div>- Confirm the exact inclusions on Exponent’s official pricing page (packages can change).</div>
                             </CardContent>
                         </Card>
                     )}

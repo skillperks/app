@@ -75,15 +75,13 @@ export default async function EducativeStudentDiscountPage() {
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground space-y-3">
             <div>
-              - <span className="text-foreground font-medium">Standard</span>: best for structured learning with hands-on
-              courses.
+              - If you qualify for student pricing, choose the subscription option that matches your goals (hands-on courses, projects, cloud labs, interview prep tools).
             </div>
             <div>
-              - <span className="text-foreground font-medium">Premium</span>: best if you want projects + interview prep.
+              - If you’re unsure, prioritize what you’ll actually use (e.g., projects and AI Mock Interviews vs. cloud labs).
             </div>
             <div>
-              - <span className="text-foreground font-medium">Premium Plus</span>: best if you want cloud labs in addition
-              to projects.
+              - Confirm the exact inclusions/pricing on Educative during checkout (plans and packaging can change).
             </div>
           </CardContent>
         </Card>
@@ -94,7 +92,7 @@ export default async function EducativeStudentDiscountPage() {
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground space-y-2">
             <div>- Step 1: Go to Educative student pricing and sign up with your student email.</div>
-            <div>- Step 2: Choose Standard / Premium / Premium Plus based on your goals.</div>
+            <div>- Step 2: Choose the subscription option based on what you want to learn (courses, projects, cloud labs, mock interviews).</div>
             <div>- Step 3: Complete checkout and verify your email if prompted.</div>
             <div>
               - Step 4: If you’re not eligible, use the main Educative coupon page to get the best available deal.

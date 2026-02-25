@@ -99,12 +99,6 @@ export function Navbar() {
                     </form>
                 </div>
 
-                <div className="hidden sm:flex items-center gap-2">
-                    <Button variant="ghost" className="h-9 rounded-full px-4 text-slate-300 hover:text-foreground">
-                        Sign in
-                    </Button>
-                </div>
-
                 <Sheet>
                     <SheetTrigger asChild>
                         <Button

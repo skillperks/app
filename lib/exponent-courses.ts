@@ -52,9 +52,7 @@ export const exponentCourses: ExponentCourse[] = [
             },
         ],
         affiliateLink: buildGoLink({
-            to: "https://www.tryexponent.com/?ref=sp20",
-            merchant: "exponent",
-            placement: "course",
+            to: "/go/exponent?src=course",
         }),
     },
     {
