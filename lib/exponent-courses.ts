@@ -1,5 +1,3 @@
-import { buildGoLink } from "@/lib/affiliate-links";
-
 export interface ExponentCourse {
     id: string;
     slug: string;
@@ -51,9 +49,7 @@ export const exponentCourses: ExponentCourse[] = [
                 answer: "No. This course is focused on design, communication, and trade-offs rather than implementation.",
             },
         ],
-        affiliateLink: buildGoLink({
-            to: "/go/exponent?src=course",
-        }),
+        affiliateLink: "/go/exponent?src=course",
     },
     {
         id: "pm-interview-course",
@@ -79,11 +75,7 @@ export const exponentCourses: ExponentCourse[] = [
                 answer: "Yes—many roles benefit from product thinking, but it’s optimized for PM interview loops.",
             },
         ],
-        affiliateLink: buildGoLink({
-            to: "https://www.tryexponent.com/?ref=sp20",
-            merchant: "exponent",
-            placement: "course",
-        }),
+        affiliateLink: "/go/exponent?src=course",
     },
     {
         id: "behavioral-interview-course",
@@ -109,11 +101,7 @@ export const exponentCourses: ExponentCourse[] = [
                 answer: "Most people improve within 2–3 sessions by drafting stories and practicing out loud with feedback.",
             },
         ],
-        affiliateLink: buildGoLink({
-            to: "https://www.tryexponent.com/?ref=sp20",
-            merchant: "exponent",
-            placement: "course",
-        }),
+        affiliateLink: "/go/exponent?src=course",
     },
 ];
 

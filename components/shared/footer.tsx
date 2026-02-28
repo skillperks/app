@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Github, Instagram, Pin, Twitter, Youtube } from "lucide-react";
 import { NewsletterSignup } from "@/components/shared/newsletter-signup";
@@ -12,7 +13,6 @@ const footerLinks = {
     company: [
         { name: "About", href: "/about" },
         { name: "Blog", href: "/blog" },
-        { name: "Careers", href: "/careers" },
         { name: "Contact", href: "/contact" },
     ],
     legal: [
@@ -29,7 +29,13 @@ export function Footer() {
                 <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
                     <div className="col-span-2 lg:col-span-2">
                         <Link href="/" className="mb-4 flex items-center space-x-2">
-                            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-cyan-500 shadow-lg shadow-cyan-500/15" />
+                            <Image
+                                src="/brand/skillperks-logo.png"
+                                alt="SkillPerks"
+                                width={36}
+                                height={36}
+                                className="h-9 w-9 rounded-xl"
+                            />
                             <span className="text-sm font-semibold tracking-tight">SkillPerks</span>
                         </Link>
                         <p className="mt-4 max-w-xs text-sm text-muted-foreground">

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -17,7 +18,8 @@ import {
 import { Input } from "@/components/ui/input";
 
 const navigation = [
-    { name: "Categories", href: "/browse" },
+    { name: "Courses", href: "/browse" },
+    { name: "Coupons", href: "/coupons" },
     { name: "Reviews", href: "/reviews" },
     { name: "Comparisons", href: "/comparisons" },
     { name: "Resources", href: "/guides" },
@@ -65,7 +67,14 @@ export function Navbar() {
             <header className="w-full border-b border-white/5 bg-background/35 backdrop-blur-xl">
                 <div className="container mx-auto flex h-16 items-center gap-6 px-4 md:px-6">
                 <Link href="/" className="flex items-center gap-2 shrink-0">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-cyan-500 shadow-lg shadow-cyan-500/15" />
+                    <Image
+                        src="/brand/skillperks-logo.png"
+                        alt="SkillPerks"
+                        width={36}
+                        height={36}
+                        className="h-9 w-9 rounded-xl"
+                        priority
+                    />
                     <span className="text-sm font-semibold tracking-tight">SkillPerks</span>
                 </Link>
 

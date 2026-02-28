@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { trackAffiliateClick } from "@/lib/ga4";
 
-const EXPONENT_AFFILIATE_URL = "https://www.tryexponent.com/?ref=sp20";
+const EXPONENT_AFFILIATE_URL = "https://www.tryexponent.com/home?ref=sp20";
 
 export async function GET(req: Request) {
   const incoming = new URL(req.url);

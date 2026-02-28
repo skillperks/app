@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -26,20 +26,13 @@ export function Hero() {
                         Premium reviews and verified discounts for the tools used by world-class engineering teams. No fluff, just insights.
                     </p>
                     <div className="mt-8 mx-auto max-w-3xl">
-                        <div className="flex flex-col items-center gap-4 sm:flex-row">
-                            <div className="relative w-full flex-1">
-                                <Search className="pointer-events-none absolute left-6 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
-                                <input
-                                    placeholder="Find your next course at best price..."
-                                    className="block w-full rounded-2xl border border-slate-700 bg-slate-900/60 py-5 pl-16 pr-8 text-lg outline-none transition-all placeholder:text-slate-600 focus:ring-2 focus:ring-cyan-500"
-                                />
-                            </div>
+                        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                             <Button
                                 className="btn-accent-gradient w-full rounded-2xl px-10 py-5 font-bold shadow-xl shadow-purple-500/15 hover:brightness-110 active:scale-[0.98] sm:w-auto"
                                 asChild
                             >
-                                <Link href="/browse">
-                                    Search Courses
+                                <Link href="/tools/course-finder">
+                                    Take the Course Finder Quiz
                                     <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
                             </Button>
