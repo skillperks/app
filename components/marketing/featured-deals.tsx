@@ -1,15 +1,7 @@
 import Link from "next/link";
-import { ArrowUpRight, Check, Clock } from "lucide-react";
+import { ArrowUpRight, Tag, Star, Terminal, MessagesSquare, Workflow } from "lucide-react";
 
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const deals = [
@@ -17,151 +9,176 @@ const deals = [
         id: 1,
         platform: "Educative",
         couponSlug: "educative-coupon-code",
-        offer: "40% OFF Annual Plan",
-        code: "SKILLPERKS40",
-        expires: "2 Days",
+        offer:
+            "Text-first interactive learning designed for modern developers. Gain deep technical skills with cloud-hosted practice environments.",
         rating: 4.8,
-        reviews: 1240,
-        logoColor: "bg-blue-600",
+        badge: "Verified Premium",
+        badgeTone: "green",
+        icon: "terminal",
+        iconTone: "cyan",
+        tags: [
+            { label: "INTERACTIVE", tone: "purple" },
+            { label: "BROWSER_IDE", tone: "cyan" },
+        ],
     },
     {
         id: 2,
         platform: "DataCamp",
         couponSlug: "datacamp-coupon-code",
-        offer: "60% OFF Premium",
-        code: "DATA60",
-        expires: "Ends Soon",
-        rating: 4.7,
-        reviews: 3200,
-        logoColor: "bg-green-600",
+        offer:
+            "Master large-scale system design through visual architecture. The definitive resource for scaling services to millions of users.",
+        rating: 4.9,
+        badge: "Trending Now",
+        badgeTone: "orange",
+        icon: "workflow",
+        iconTone: "purple",
+        tags: [
+            { label: "ARCHITECTURE", tone: "pink" },
+            { label: "SCALABILITY", tone: "orange" },
+        ],
     },
     {
         id: 3,
         platform: "Exponent",
         couponSlug: "exponent-promo-code",
-        offer: "10% OFF Interview Prep",
-        code: "LINK ONLY",
-        expires: "Ongoing",
+        offer:
+            "Land your dream role with specialized interview prep. Featuring mock interviews and real-world scenarios from top tech companies.",
         rating: 4.8,
-        reviews: 950,
-        logoColor: "bg-indigo-600",
-    },
-    {
-        id: 4,
-        platform: "Udemy",
-        couponSlug: "udemy-coupons",
-        offer: "Courses from $9.99",
-        code: "AUTO-APPLIED",
-        expires: "24 Hours",
-        rating: 4.5,
-        reviews: 15000,
-        logoColor: "bg-red-600",
-    },
-    {
-        id: 5,
-        platform: "Coursera",
-        couponSlug: "coursera-deals",
-        offer: "7-Day Free Trial",
-        code: "LINK ONLY",
-        expires: "Ongoing",
-        rating: 4.6,
-        reviews: 5000,
-        logoColor: "bg-blue-500",
+        badge: "High Value",
+        badgeTone: "cyan",
+        icon: "messages",
+        iconTone: "pink",
+        tags: [
+            { label: "INTERVIEW_PREP", tone: "green" },
+            { label: "MOCK_TESTS", tone: "purple" },
+        ],
     },
 ];
 
+function toneClasses(tone: string) {
+    switch (tone) {
+        case "green":
+            return {
+                badge: "border-green-500/30 bg-green-500/10 text-green-400",
+                text: "text-green-400",
+            };
+        case "orange":
+            return {
+                badge: "border-orange-500/30 bg-orange-500/10 text-orange-400",
+                text: "text-orange-400",
+            };
+        case "cyan":
+            return {
+                badge: "border-cyan-500/30 bg-cyan-500/10 text-cyan-300",
+                text: "text-cyan-300",
+            };
+        case "purple":
+            return {
+                badge: "border-purple-500/30 bg-purple-500/10 text-purple-300",
+                text: "text-purple-300",
+            };
+        case "pink":
+            return {
+                badge: "border-pink-500/30 bg-pink-500/10 text-pink-300",
+                text: "text-pink-300",
+            };
+        default:
+            return {
+                badge: "border-slate-700 bg-slate-800/80 text-slate-300",
+                text: "text-slate-300",
+            };
+    }
+}
+
+function PlatformIcon({ name, tone }: { name: string; tone: string }) {
+    const iconClass = `h-7 w-7 ${toneClasses(tone).text}`;
+    if (name === "terminal") return <Terminal className={iconClass} />;
+    if (name === "workflow") return <Workflow className={iconClass} />;
+    return <MessagesSquare className={iconClass} />;
+}
+
 export function FeaturedDeals() {
     return (
-        <section className="bg-muted/30 py-16 lg:py-24">
+        <section className="py-20 lg:py-24">
             <div className="container px-4 md:px-6 mx-auto">
-                <div className="flex flex-col items-center justify-between gap-4 md:flex-row mb-10">
+                <div className="flex flex-col items-center justify-between gap-6 md:flex-row mb-16">
                     <div>
-                        <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                            Featured Deals
+                        <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl lg:text-4xl">
+                            Top Rated Platforms
                         </h2>
-                        <p className="mt-2 text-muted-foreground">
-                            Hand-picked discounts verified daily by our team.
+                        <p className="mt-2 text-muted-foreground text-lg">
+                            Industry-leading benchmarks for technical excellence.
                         </p>
                     </div>
-                    <Button variant="ghost" className="hidden md:inline-flex" asChild>
-                        <Link href="/coupons">
-                            View all 50+ coupons <ArrowUpRight className="ml-2 h-4 w-4" />
-                        </Link>
-                    </Button>
+                    <Link
+                        href="/reviews"
+                        className="hidden md:inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/5 px-6 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200"
+                    >
+                        Explore All Reviews <ArrowUpRight className="ml-2 h-4 w-4" />
+                    </Link>
                 </div>
 
-                <Carousel
-                    opts={{
-                        align: "start",
-                        loop: true,
-                    }}
-                    className="w-full"
-                >
-                    <CarouselContent className="-ml-2 md:-ml-4">
-                        {deals.map((deal) => (
-                            <CarouselItem key={deal.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                                <Card className="h-full border-muted-foreground/10 shadow-sm transition-all hover:border-primary/20 hover:shadow-md">
-                                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                        <div className="flex items-center gap-3">
-                                            <div className={`h-10 w-10 rounded-lg ${deal.logoColor} flex items-center justify-center text-white font-bold text-lg shadow-sm`}>
-                                                {deal.platform[0]}
-                                            </div>
-                                            <div>
-                                                <h3 className="font-semibold">{deal.platform}</h3>
-                                                <div className="flex items-center text-xs text-muted-foreground">
-                                                    <span className="flex items-center text-amber-500 mr-1">★ {deal.rating}</span>
-                                                    <span>({deal.reviews})</span>
-                                                </div>
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+                    {deals.map((deal) => {
+                        const badge = toneClasses(deal.badgeTone);
+                        return (
+                            <Card key={deal.id} className="group glass-card hover-glow rounded-3xl p-10 transition-all duration-500">
+                                <CardHeader className="p-0">
+                                    <div className="flex items-start justify-between mb-8">
+                                        <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center border border-slate-700">
+                                            <PlatformIcon name={deal.icon} tone={deal.iconTone} />
+                                        </div>
+                                        <div className="flex flex-col items-end">
+                                            <span className={`mb-3 rounded-full border px-3 py-1 text-[11px] font-extrabold uppercase tracking-widest ${badge.badge}`}>
+                                                {deal.badge}
+                                            </span>
+                                            <div className="flex items-center rounded-lg bg-yellow-500/5 px-2.5 py-1 text-yellow-500">
+                                                <Star className="h-4 w-4 fill-current" />
+                                                <span className="ml-1.5 text-sm font-extrabold text-white">{deal.rating}</span>
                                             </div>
                                         </div>
-                                        <Badge variant="secondary" className="font-mono text-xs uppercase tracking-wider">
-                                            Verified
-                                        </Badge>
-                                    </CardHeader>
-                                    <CardContent className="pt-4">
-                                        <div className="mb-4">
-                                            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wide text-[10px] mb-1">
-                                                Exclusive Offer
-                                            </p>
-                                            <p className="text-2xl font-bold text-primary">
-                                                {deal.offer}
-                                            </p>
-                                        </div>
+                                    </div>
+                                    <h3 className="text-2xl font-extrabold mb-4">{deal.platform}</h3>
+                                </CardHeader>
 
-                                        <div className="grid grid-cols-2 gap-2 text-sm">
-                                            <div className="flex items-center gap-2 rounded-md bg-muted/50 p-2 text-muted-foreground">
-                                                <Clock className="h-4 w-4" />
-                                                <span className="text-xs font-medium">{deal.expires}</span>
-                                            </div>
-                                            <div className="flex items-center gap-2 rounded-md bg-green-500/10 p-2 text-green-600 dark:text-green-400">
-                                                <Check className="h-4 w-4" />
-                                                <span className="text-xs font-medium">Active Code</span>
-                                            </div>
-                                        </div>
-                                    </CardContent>
-                                    <CardFooter className="pt-2">
-                                        <Button className="w-full gap-2 font-semibold overflow-hidden group" asChild>
-                                            <Link href={`/coupons/${deal.couponSlug}`}>
-                                                <span className="relative">Get Deal</span>
-                                            </Link>
+                                <CardContent className="p-0">
+                                    <p className="text-slate-400 text-md leading-relaxed mb-8">{deal.offer}</p>
+                                    <div className="flex flex-wrap gap-2.5 mb-10">
+                                        {deal.tags.map((t) => (
+                                            <span
+                                                key={t.label}
+                                                className={`rounded-lg border bg-slate-800/80 px-3 py-1 text-[11px] font-semibold border-slate-700 ${toneClasses(t.tone).text}`}
+                                            >
+                                                {t.label}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <Button className="flex-1 rounded-xl bg-cyan-600 text-white text-sm font-bold hover:bg-cyan-500" asChild>
+                                            <Link href={`/coupons/${deal.couponSlug}`}>View Details</Link>
                                         </Button>
-                                    </CardFooter>
-                                </Card>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <div className="flex justify-center mt-8 gap-2">
-                        <CarouselPrevious className="static translate-y-0" />
-                        <CarouselNext className="static translate-y-0" />
-                    </div>
-                </Carousel>
+                                        <Button
+                                            variant="outline"
+                                            className="rounded-xl border-slate-700 bg-transparent px-4 text-slate-300 hover:bg-slate-800"
+                                            size="icon"
+                                        >
+                                            <Tag className="h-5 w-5" />
+                                            <span className="sr-only">Offers</span>
+                                        </Button>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        );
+                    })}
+                </div>
 
                 <div className="mt-8 text-center md:hidden">
-                    <Button variant="ghost" asChild>
-                        <Link href="/coupons">
-                            View all coupons
-                        </Link>
-                    </Button>
+                    <Link
+                        href="/reviews"
+                        className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/5 px-6 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200"
+                    >
+                        Explore All Reviews <ArrowUpRight className="ml-2 h-4 w-4" />
+                    </Link>
                 </div>
             </div>
         </section>

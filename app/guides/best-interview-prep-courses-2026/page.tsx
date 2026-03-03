@@ -57,18 +57,18 @@ export default function BestInterviewPrepCourses2026() {
 
         <Card>
           <CardHeader>
-            <CardTitle>3) LeetCode</CardTitle>
+            <CardTitle>3) DataCamp</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">
             <p>
-              Best if you need daily reps and a large question bank with study plans.
+              Best if you’re interviewing for data roles and want extra reps on SQL/Python fundamentals via interactive exercises.
             </p>
             <div className="flex flex-col sm:flex-row gap-2">
               <Button asChild>
-                <Link href="/coupons/leetcode-deals">View Deals</Link>
+                <Link href="/coupons/datacamp-coupon-code">Get Deal</Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="/reviews/leetcode">Read Review</Link>
+                <Link href="/reviews/datacamp">Read Review</Link>
               </Button>
             </div>
           </CardContent>

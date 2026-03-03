@@ -76,12 +76,12 @@ export function PopularCategories() {
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
                     {categories.map((category) => (
                         <Link key={category.name} href={category.href} className="group min-w-0">
-                            <Card className="h-full border-muted hover:border-primary/50 transition-colors">
+                            <Card className="h-full border-border/60 bg-card/40 backdrop-blur transition-colors hover:border-primary/30">
                                 <CardContent className="flex flex-col items-center justify-center p-6 text-center h-full">
                                     <div className={`p-3 rounded-full mb-4 ${category.bg} ${category.color} group-hover:scale-110 transition-transform`}>
                                         <category.icon className="h-6 w-6" />
                                     </div>
-                                    <h3 className="font-semibold text-sm md:text-base text-foreground group-hover:text-primary transition-colors">
+                                    <h3 className="font-semibold text-sm md:text-base text-foreground group-hover:text-foreground transition-colors">
                                         {category.name}
                                     </h3>
                                     <span className="text-xs text-muted-foreground mt-1">

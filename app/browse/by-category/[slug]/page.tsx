@@ -13,7 +13,7 @@ const categoryConfig: Record<
   "system-design": {
     title: "System Design",
     description: "Interview-focused and practical resources for designing scalable systems.",
-    recommendedPlatformSlugs: ["educative", "bytebytego", "exponent"],
+    recommendedPlatformSlugs: ["educative", "exponent"],
   },
   "data-science": {
     title: "Data Science",
@@ -23,7 +23,7 @@ const categoryConfig: Record<
   "interview-prep": {
     title: "Interview Prep",
     description: "Coding patterns, mock interviews, and structured prep.",
-    recommendedPlatformSlugs: ["educative", "exponent", "bytebytego"],
+    recommendedPlatformSlugs: ["educative", "exponent"],
   },
   "cloud-computing": {
     title: "Cloud Computing",

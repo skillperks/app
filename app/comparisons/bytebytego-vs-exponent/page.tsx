@@ -6,8 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-export default function ByteByteGoVsExponentPage() {
-  const a = getPlatformBySlug("bytebytego");
+export default function EducativeVsExponentPage() {
+  const a = getPlatformBySlug("educative");
   const b = getPlatformBySlug("exponent");
 
   if (!a || !b) {
@@ -19,10 +19,10 @@ export default function ByteByteGoVsExponentPage() {
       <div className="space-y-10">
         <div className="space-y-4">
           <Badge className="w-fit">Comparison</Badge>
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">ByteByteGo vs Exponent (2026)</h1>
+          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">Educative vs Exponent (2026)</h1>
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
-            Two popular choices for interview prep. ByteByteGo is diagram-first system design content, while Exponent adds structured prep
-            and peer mock interviews.
+            Two strong options for interview prep. Educative is text-first and interactive, while Exponent adds structured prep
+            plus coaching and peer mock interviews.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export default function ByteByteGoVsExponentPage() {
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-muted-foreground">
               <p>
-                Choose <strong className="text-foreground">ByteByteGo</strong> if you want a visual system-design reference and clear explanations you can revisit.
+                Choose <strong className="text-foreground">Educative</strong> if you prefer hands-on, text + interactive learning you can move through quickly.
               </p>
               <p>
                 Choose <strong className="text-foreground">Exponent</strong> if you want a more guided plan + peer mock interviews (especially useful for PM & system design loops).

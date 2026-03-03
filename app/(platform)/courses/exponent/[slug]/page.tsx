@@ -27,8 +27,8 @@ export default async function ExponentCoursePage(props: ExponentCoursePageProps)
 
     return (
         <div className="container px-4 py-10 md:px-6 md:py-16 mx-auto">
-            <div className="grid gap-10 lg:grid-cols-[1fr_350px]">
-                <div className="space-y-10">
+                <div className="grid gap-10 lg:grid-cols-[1fr_350px]">
+                    <div className="space-y-10">
                     <div className="space-y-4">
                         <div className="flex flex-wrap gap-2">
                             <Badge>Exponent</Badge>
@@ -141,9 +141,9 @@ export default async function ExponentCoursePage(props: ExponentCoursePageProps)
                     </div>
                 </div>
 
-                <div className="space-y-6">
-                    <Card className="sticky top-24 overflow-hidden border-primary/20 shadow-lg">
-                        <CardContent className="p-6 space-y-4">
+                    <div className="space-y-6">
+                        <Card className="sticky top-24 overflow-hidden border-primary/20 shadow-lg">
+                            <CardContent className="p-6 space-y-4">
                             <div>
                                 <div className="text-sm text-muted-foreground">Category</div>
                                 <div className="font-semibold">{course.category}</div>
@@ -166,10 +166,10 @@ export default async function ExponentCoursePage(props: ExponentCoursePageProps)
                             <div className="text-xs text-muted-foreground">
                                 <Link href="/courses/exponent/" className="hover:underline">← Back to Exponent courses</Link>
                             </div>
-                        </CardContent>
-                    </Card>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </div>
             </div>
-        </div>
     );
 }

@@ -40,18 +40,18 @@ export default function BestDataScienceCourses2026() {
 
         <Card>
           <CardHeader>
-            <CardTitle>2) DataQuest</CardTitle>
+            <CardTitle>2) Educative</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">
             <p>
-              Best for project-based learning paths if you want portfolio-style practice.
+              Best if you want to add engineering fundamentals (Python, CS topics) with text + interactive lessons.
             </p>
             <div className="flex flex-col sm:flex-row gap-2">
               <Button asChild>
-                <Link href="/coupons/dataquest-coupon-code">Get Deal</Link>
+                <Link href="/coupons/educative-coupon-code">Get Coupon</Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="/reviews/dataquest">Read Review</Link>
+                <Link href="/reviews/educative">Read Review</Link>
               </Button>
             </div>
           </CardContent>
@@ -59,18 +59,18 @@ export default function BestDataScienceCourses2026() {
 
         <Card>
           <CardHeader>
-            <CardTitle>3) Coursera</CardTitle>
+            <CardTitle>3) Exponent</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">
             <p>
-              Best if you want professional certificates and structured programs from universities or industry partners.
+              Best if your goal is interviewing for data roles and you want structured prep plus coaching options.
             </p>
             <div className="flex flex-col sm:flex-row gap-2">
               <Button asChild>
-                <Link href="/coupons/coursera-deals">View Deals</Link>
+                <Link href="/coupons/exponent-promo-code">Get Promo</Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="/reviews/coursera">Read Review</Link>
+                <Link href="/reviews/exponent">Read Review</Link>
               </Button>
             </div>
           </CardContent>

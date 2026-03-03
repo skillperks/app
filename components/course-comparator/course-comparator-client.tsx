@@ -258,9 +258,8 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
   }, [mobileActiveId, selectedCourses]);
 
   const showComparison = useMemo(() => {
-    const fromUrl = selectedIds.length >= 2;
-    return hasCompared || fromUrl;
-  }, [hasCompared, selectedIds.length]);
+    return selectedIds.length >= 2;
+  }, [selectedIds.length]);
 
   function syncSelectedToUrl(next: string[]) {
     const params = new URLSearchParams(searchParams.toString());
@@ -299,7 +298,6 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
 
   function onCompare() {
     if (selectedCourses.length < 2) return;
-    setHasCompared(true);
     trackEvent("comparison_started", {
       selected_count: selectedCourses.length,
       session_id: sessionId,
@@ -309,6 +307,12 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
       comparisonRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   }
+
+  useEffect(() => {
+    if (selectedCourses.length >= 2) {
+      setHasCompared(true);
+    }
+  }, [selectedCourses.length]);
 
   async function copyShareUrl() {
     const url = typeof window === "undefined" ? "" : window.location.href;
@@ -616,98 +620,96 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
               </div>
             </div>
 
-            <div className="overflow-x-auto">
-              <div className="flex items-end gap-4 min-w-[1120px]">
-                <div className="space-y-2 flex-1 min-w-[280px]">
-                  <Label htmlFor="cc-search">Search</Label>
-                  <Input id="cc-search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="e.g. system design, python" />
-                </div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:items-end">
+              <div className="space-y-2 lg:col-span-4">
+                <Label htmlFor="cc-search">Search</Label>
+                <Input id="cc-search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="e.g. system design, python" />
+              </div>
 
-                <div className="space-y-2 min-w-[180px]">
-                  <Label>Platform</Label>
-                  <Select value={filters.platformId} onValueChange={(v) => setFilters((f) => ({ ...f, platformId: v }))}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All platforms</SelectItem>
-                      {platforms.map((p) => (
-                        <SelectItem key={p.id} value={p.id}>
-                          {p.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="space-y-2 lg:col-span-2">
+                <Label>Platform</Label>
+                <Select value={filters.platformId} onValueChange={(v) => setFilters((f) => ({ ...f, platformId: v }))}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="All" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All platforms</SelectItem>
+                    {platforms.map((p) => (
+                      <SelectItem key={p.id} value={p.id}>
+                        {p.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-                <div className="space-y-2 flex-1 min-w-[240px]">
-                  <Label>Category</Label>
-                  <Select value={filters.category} onValueChange={(v) => setFilters((f) => ({ ...f, category: v }))}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All categories</SelectItem>
-                      {categories.map((cat) => (
-                        <SelectItem key={cat} value={cat}>
-                          {cat}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="space-y-2 lg:col-span-3">
+                <Label>Category</Label>
+                <Select value={filters.category} onValueChange={(v) => setFilters((f) => ({ ...f, category: v }))}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="All" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All categories</SelectItem>
+                    {categories.map((cat) => (
+                      <SelectItem key={cat} value={cat}>
+                        {cat}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-                <div className="space-y-2 min-w-[140px]">
-                  <Label>Level</Label>
-                  <Select value={filters.level} onValueChange={(v) => setFilters((f) => ({ ...f, level: v as Filters["level"] }))}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Any" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="any">Any</SelectItem>
-                      <SelectItem value="beginner">Beginner</SelectItem>
-                      <SelectItem value="intermediate">Intermediate</SelectItem>
-                      <SelectItem value="advanced">Advanced</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="space-y-2 lg:col-span-1">
+                <Label>Level</Label>
+                <Select value={filters.level} onValueChange={(v) => setFilters((f) => ({ ...f, level: v as Filters["level"] }))}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Any" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="any">Any</SelectItem>
+                    <SelectItem value="beginner">Beginner</SelectItem>
+                    <SelectItem value="intermediate">Intermediate</SelectItem>
+                    <SelectItem value="advanced">Advanced</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-                <div className="space-y-2 min-w-[160px]">
-                  <Label>Format</Label>
-                  <Select value={filters.format} onValueChange={(v) => setFilters((f) => ({ ...f, format: v as Filters["format"] }))}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Any" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="any">Any</SelectItem>
-                      <SelectItem value="text">Text</SelectItem>
-                      <SelectItem value="video">Video</SelectItem>
-                      <SelectItem value="interactive">Interactive</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="space-y-2 lg:col-span-2">
+                <Label>Format</Label>
+                <Select value={filters.format} onValueChange={(v) => setFilters((f) => ({ ...f, format: v as Filters["format"] }))}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Any" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="any">Any</SelectItem>
+                    <SelectItem value="text">Text</SelectItem>
+                    <SelectItem value="video">Video</SelectItem>
+                    <SelectItem value="interactive">Interactive</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-                <div className="space-y-2 min-w-[220px]">
-                  <Label>Sort selected</Label>
-                  <Select value={sortKey} onValueChange={(v) => setSortKey(v as SortKey)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="None" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="none">None</SelectItem>
-                      <SelectItem value="rating">Rating (high → low)</SelectItem>
-                      <SelectItem value="price_asc">Price (low → high)</SelectItem>
-                      <SelectItem value="price_desc">Price (high → low)</SelectItem>
-                      <SelectItem value="value">Value Score (high → low)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="space-y-2 lg:col-span-3">
+                <Label>Sort selected</Label>
+                <Select value={sortKey} onValueChange={(v) => setSortKey(v as SortKey)}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="None" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="none">None</SelectItem>
+                    <SelectItem value="rating">Rating (high → low)</SelectItem>
+                    <SelectItem value="price_asc">Price (low → high)</SelectItem>
+                    <SelectItem value="price_desc">Price (high → low)</SelectItem>
+                    <SelectItem value="value">Value Score (high → low)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-                <div className="pb-[2px]">
-                  <Button variant="outline" size="sm" onClick={resetFilters}>
-                    Reset filters
-                  </Button>
-                </div>
+              <div className="sm:col-span-2 lg:col-span-12 lg:flex lg:justify-end">
+                <Button variant="outline" size="sm" onClick={resetFilters}>
+                  Reset filters
+                </Button>
               </div>
             </div>
 
@@ -862,109 +864,13 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
                   ))}
                 </div>
 
-                <div className="md:hidden space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    {selectedCourses.map((c) => (
-                      <Button
-                        key={c.id}
-                        size="sm"
-                        variant={effectiveMobileActiveId === c.id ? "default" : "outline"}
-                        onClick={() => setMobileActiveId(c.id)}
-                      >
-                        {platformById.get(c.platformId)?.name ?? c.platformId}
-                      </Button>
-                    ))}
-                  </div>
-
-                  {(() => {
-                    const course = selectedCourses.find((c) => c.id === effectiveMobileActiveId) ?? selectedCourses[0];
-                    if (!course) return null;
-                    return (
-                      <Card>
-                        <CardHeader className="space-y-2">
-                          <CardTitle className="text-base">{course.title}</CardTitle>
-                          <div className="flex flex-wrap gap-2">
-                            <Button asChild size="sm">
-                              <a
-                                href={buildAffiliateUrl(course, sessionId)}
-                                target="_blank"
-                                rel="noreferrer"
-                                onClick={() =>
-                                  trackEvent("comparison_cta_click", {
-                                    course_id: course.id,
-                                    platform_id: course.platformId,
-                                    session_id: sessionId,
-                                  })
-                                }
-                              >
-                                View Deal
-                              </a>
-                            </Button>
-                            <Button asChild size="sm" variant="outline">
-                              <a href={`/reviews/${platformById.get(course.platformId)?.slug ?? course.platformId}`}>Review</a>
-                            </Button>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                          {visibleGroups.map((group) => (
-                            <div key={group.group} className="space-y-2">
-                              <div className="flex items-center justify-between">
-                                <div className="font-semibold">{group.group}</div>
-                                <Button size="sm" variant="ghost" onClick={() => toggleGroupCollapsed(group.group)}>
-                                  {collapsedGroups[group.group] ? "Expand" : "Collapse"}
-                                </Button>
-                              </div>
-                              {collapsedGroups[group.group]
-                                ? null
-                                : group.rows.map((row) => {
-                                    const raw = row.getValue(course);
-                                    let rendered: string = "—";
-                                    if (row.type === "coupon") {
-                                      const code = typeof raw === "string" ? raw : "";
-                                      rendered = code ? code : "—";
-                                    } else if (typeof raw === "string") {
-                                      rendered = raw || "—";
-                                    } else if (typeof raw === "number") {
-                                      rendered = row.format ? row.format(raw, course) : String(raw);
-                                    } else if (typeof raw === "boolean") {
-                                      rendered = boolLabel(raw);
-                                    } else if (raw === null || raw === undefined) {
-                                      rendered = "—";
-                                    } else {
-                                      rendered = String(raw);
-                                    }
-
-                                    return (
-                                      <div key={row.label} className="flex items-start justify-between gap-4 border rounded-md p-3">
-                                        <div className="text-sm text-muted-foreground">{row.label}</div>
-                                        <div className="text-sm font-medium text-right">
-                                          {rendered}
-                                          {row.type === "coupon" && typeof raw === "string" && raw ? (
-                                            <div className="pt-2">
-                                              <Button size="sm" variant="outline" onClick={() => copyCoupon(raw)}>
-                                                Copy
-                                              </Button>
-                                            </div>
-                                          ) : null}
-                                        </div>
-                                      </div>
-                                    );
-                                  })}
-                            </div>
-                          ))}
-                        </CardContent>
-                      </Card>
-                    );
-                  })()}
-                </div>
-
-                <div className="hidden md:block overflow-x-auto border rounded-lg">
-                  <table className="w-full min-w-[720px] text-sm">
-                    <thead className="sticky top-0 bg-background">
+                <div className="overflow-x-auto border rounded-lg">
+                  <table className="w-full min-w-[900px] text-sm border-separate border-spacing-0">
+                    <thead className="sticky top-0 z-20 bg-background">
                       <tr>
-                        <th className="text-left p-3 w-[220px] border-b">Attribute</th>
+                        <th className="text-left p-3 w-[240px] border-b bg-background sticky left-0 z-30">Attribute</th>
                         {selectedCourses.map((c) => (
-                          <th key={c.id} className="text-left p-3 border-b align-top">
+                          <th key={c.id} className="text-left p-3 border-b align-top min-w-[260px]">
                             <div className="space-y-2">
                               <div className="font-semibold leading-snug">{c.title}</div>
                               <div className="flex flex-wrap gap-2">
@@ -998,7 +904,7 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
                       {visibleGroups.map((group) => (
                         <Fragment key={group.group}>
                           <tr className="bg-muted/30">
-                            <td className="p-3 border-b" colSpan={1 + selectedCourses.length}>
+                            <td className="p-3 border-b bg-muted/30 sticky left-0 z-10" colSpan={1 + selectedCourses.length}>
                               <div className="flex items-center justify-between gap-3">
                                 <span className="font-semibold">{group.group}</span>
                                 <Button size="sm" variant="ghost" onClick={() => toggleGroupCollapsed(group.group)}>
@@ -1025,8 +931,13 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
                                     : null;
 
                                 return (
-                                  <tr key={`${group.group}-${row.label}`}>
-                                    <td className="p-3 font-medium border-b align-top">{row.label}</td>
+                                  <tr
+                                    key={`${group.group}-${row.label}`}
+                                    className="odd:bg-background even:bg-muted/10"
+                                  >
+                                    <td className="p-3 font-medium border-b align-top bg-background sticky left-0 z-10">
+                                      {row.label}
+                                    </td>
                                     {selectedCourses.map((course, idx) => {
                                       const raw = row.getValue(course);
                                       const highlight = winIdx === idx;
@@ -1034,7 +945,10 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
                                       if (row.type === "coupon") {
                                         const code = typeof raw === "string" ? raw : "";
                                         return (
-                                          <td key={course.id} className={`p-3 border-b align-top ${highlight ? "bg-emerald-500/10" : ""}`}>
+                                          <td
+                                            key={course.id}
+                                            className={`p-3 border-b align-top ${highlight ? "bg-emerald-500/10" : ""}`}
+                                          >
                                             {code ? (
                                               <CouponReveal
                                                 code={code}
@@ -1063,7 +977,10 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
                                       }
 
                                       return (
-                                        <td key={course.id} className={`p-3 border-b align-top ${highlight ? "bg-emerald-500/10" : ""}`}>
+                                        <td
+                                          key={course.id}
+                                          className={`p-3 border-b align-top ${highlight ? "bg-emerald-500/10" : ""}`}
+                                        >
                                           <div className="flex items-center justify-between gap-3">
                                             <span>{rendered}</span>
                                           </div>

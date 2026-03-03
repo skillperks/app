@@ -53,13 +53,13 @@ export const educativeCourses: EducativeCourse[] = [
                 answer: "You can buy the course individually, but Unlimited is usually better value if you plan to take multiple Grokking courses.",
             },
         ],
-        affiliateLink: "https://www.educative.io/unlimited?aff=xy8B",
+        affiliateLink: "/go/educative?src=course",
     },
     {
         id: "grokking-coding-patterns",
         slug: "grokking-the-coding-interview-patterns",
         title: "Grokking the Coding Interview: Patterns for Coding Questions",
-        subtitle: "Master the most common patterns behind LeetCode-style problems",
+        subtitle: "Master the most common patterns behind interview-style problems",
         category: "Coding Interviews",
         difficulty: "Intermediate",
         estimatedHours: 20,
@@ -75,15 +75,15 @@ export const educativeCourses: EducativeCourse[] = [
         bestFor: ["Software engineering interviews", "FAANG-style rounds", "DSA refresh"],
         faq: [
             {
-                question: "Is this better than doing random LeetCode?",
-                answer: "Yes, because it teaches a structure. You can then apply the patterns to a broader set of LeetCode problems.",
+                question: "Is this better than doing random interview practice?",
+                answer: "Yes, because it teaches a structure. You can then apply the patterns to a broader set of interview problems.",
             },
             {
                 question: "Which language is used?",
                 answer: "Explanations are language-agnostic. You can implement solutions in your preferred language.",
             },
         ],
-        affiliateLink: "https://www.educative.io/unlimited?aff=xy8B",
+        affiliateLink: "/go/educative?src=course",
     },
     {
         id: "grokking-ml",
@@ -113,7 +113,7 @@ export const educativeCourses: EducativeCourse[] = [
                 answer: "Yes, it introduces ML system design concepts and how to communicate design choices.",
             },
         ],
-        affiliateLink: "https://www.educative.io/unlimited?aff=xy8B",
+        affiliateLink: "/go/educative?src=course",
     },
     {
         id: "patterns-for-system-design",
@@ -139,7 +139,7 @@ export const educativeCourses: EducativeCourse[] = [
                 answer: "It overlaps, but it’s more about patterns used in production architecture than interview-style problem walkthroughs.",
             },
         ],
-        affiliateLink: "https://www.educative.io/unlimited?aff=xy8B",
+        affiliateLink: "/go/educative?src=course",
     },
 ];
 

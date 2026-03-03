@@ -48,7 +48,7 @@ export default function LearningPathFrontendEngineer() {
 
         <div className="grid gap-3 sm:grid-cols-2">
           <Button asChild>
-            <Link href="/coupons/frontend-masters-coupon-code">Frontend Masters Deals</Link>
+            <Link href="/coupons/educative-coupon-code">Educative Deals</Link>
           </Button>
           <Button asChild variant="outline">
             <Link href="/tools/course-finder">Take Course Finder Quiz</Link>

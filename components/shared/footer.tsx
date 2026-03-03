@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Facebook, Github, Instagram, Pin, Twitter, Youtube } from "lucide-react";
 import { NewsletterSignup } from "@/components/shared/newsletter-signup";
 
 const footerLinks = {
@@ -12,7 +13,6 @@ const footerLinks = {
     company: [
         { name: "About", href: "/about" },
         { name: "Blog", href: "/blog" },
-        { name: "Careers", href: "/careers" },
         { name: "Contact", href: "/contact" },
     ],
     legal: [
@@ -24,12 +24,19 @@ const footerLinks = {
 
 export function Footer() {
     return (
-        <footer className="border-t bg-background">
+        <footer className="border-t border-white/5 bg-slate-950/10 backdrop-blur-xl">
             <div className="mx-auto container px-4 py-12 md:px-6 lg:py-16">
                 <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
                     <div className="col-span-2 lg:col-span-2">
                         <Link href="/" className="mb-4 flex items-center space-x-2">
-                            <span className="text-xl font-bold tracking-tight">SkillPerks</span>
+                            <Image
+                                src="/brand/skillperks-logo.png"
+                                alt="SkillPerks"
+                                width={36}
+                                height={36}
+                                className="h-9 w-9 rounded-xl"
+                            />
+                            <span className="text-sm font-semibold tracking-tight">SkillPerks</span>
                         </Link>
                         <p className="mt-4 max-w-xs text-sm text-muted-foreground">
                             Empowering developers to make informed decisions about online learning. Verified coupons, expert reviews, and smart comparisons.
@@ -39,18 +46,30 @@ export function Footer() {
                             <div className="text-xs text-muted-foreground">Deal alerts + new guides. No spam.</div>
                             <NewsletterSignup />
                         </div>
-                        <div className="mt-6 flex space-x-4">
-                            <Link href="#" className="text-muted-foreground hover:text-foreground">
+                        <div className="mt-6 flex flex-nowrap items-center gap-4">
+                            <Link href="https://github.com/skillperks" target="_blank" rel="noreferrer noopener" className="text-muted-foreground hover:text-foreground">
                                 <Github className="h-5 w-5" />
                                 <span className="sr-only">GitHub</span>
                             </Link>
-                            <Link href="#" className="text-muted-foreground hover:text-foreground">
-                                <Twitter className="h-5 w-5" />
-                                <span className="sr-only">Twitter</span>
+                            <Link href="https://www.instagram.com/skillperks" target="_blank" rel="noreferrer noopener" className="text-muted-foreground hover:text-foreground">
+                                <Instagram className="h-5 w-5" />
+                                <span className="sr-only">Instagram</span>
                             </Link>
-                            <Link href="#" className="text-muted-foreground hover:text-foreground">
-                                <Linkedin className="h-5 w-5" />
-                                <span className="sr-only">LinkedIn</span>
+                            <Link href="https://www.youtube.com/@skillperks" target="_blank" rel="noreferrer noopener" className="text-muted-foreground hover:text-foreground">
+                                <Youtube className="h-5 w-5" />
+                                <span className="sr-only">YouTube</span>
+                            </Link>
+                            <Link href="https://www.pinterest.com/skillperks" target="_blank" rel="noreferrer noopener" className="text-muted-foreground hover:text-foreground">
+                                <Pin className="h-5 w-5" />
+                                <span className="sr-only">Pinterest</span>
+                            </Link>
+                            <Link href="https://x.com/skillperks" target="_blank" rel="noreferrer noopener" className="text-muted-foreground hover:text-foreground">
+                                <Twitter className="h-5 w-5" />
+                                <span className="sr-only">X</span>
+                            </Link>
+                            <Link href="https://www.facebook.com/profile.php?id=61588161494635" target="_blank" rel="noreferrer noopener" className="text-muted-foreground hover:text-foreground">
+                                <Facebook className="h-5 w-5" />
+                                <span className="sr-only">Facebook</span>
                             </Link>
                         </div>
                     </div>
@@ -100,7 +119,7 @@ export function Footer() {
                         </ul>
                     </div>
                 </div>
-                <div className="mt-12 border-t pt-8">
+                <div className="mt-12 border-t border-white/5 pt-8">
                     <p className="text-center text-xs text-muted-foreground">
                         &copy; {new Date().getFullYear()} SkillPerks. All rights reserved.
                     </p>

@@ -18,7 +18,7 @@ export default function ContactPage() {
             <CardTitle>Email</CardTitle>
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground">
-            Replace this with your support email (e.g. support@skillperks.org).
+            Email us at skillperks@gmail.com. For faster handling, include the page URL and any relevant screenshots.
           </CardContent>
         </Card>
       </div>

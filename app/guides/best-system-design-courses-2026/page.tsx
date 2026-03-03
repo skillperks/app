@@ -40,18 +40,18 @@ export default function BestSystemDesignCourses2026() {
 
         <Card>
           <CardHeader>
-            <CardTitle>2) ByteByteGo</CardTitle>
+            <CardTitle>2) DataCamp</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">
             <p>
-              Best for diagram-first learners who want a strong visual reference for common systems and design patterns.
+              Best if you want to strengthen the data side of system design (SQL, analytics fundamentals) with interactive practice.
             </p>
             <div className="flex flex-col sm:flex-row gap-2">
               <Button asChild>
-                <Link href="/coupons/bytebytego-coupon-code">Get Coupon</Link>
+                <Link href="/coupons/datacamp-coupon-code">Get Deal</Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="/reviews/bytebytego">Read Review</Link>
+                <Link href="/reviews/datacamp">Read Review</Link>
               </Button>
             </div>
           </CardContent>
