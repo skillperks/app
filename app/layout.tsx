@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -21,11 +22,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isProd = process.env.NODE_ENV === "production";
+  const gaMeasurementId = isProd
+    ? (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-ZZGK95Z0KD")
+    : "G-0000000000";
+
   return (
     <html lang="en" suppressHydrationWarning className="dark">
       <body
         className={`${outfit.variable} antialiased`}
       >
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gaMeasurementId}', ${isProd ? "{}" : "{ send_page_view: false }"});`}
+        </Script>
         <div className="flex min-h-screen flex-col">
           <JsonLd data={[buildOrganizationJsonLd(), buildWebSiteJsonLd()]} />
           <Navbar />
