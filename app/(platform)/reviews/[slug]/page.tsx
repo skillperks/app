@@ -155,6 +155,8 @@ export default async function ReviewPage(props: ReviewPageProps) {
               }
             : null;
 
+    const couponPageHref = `/coupons/${platform.couponSlug}`;
+
     return (
         <div className="container px-4 py-10 md:px-6 md:py-16 mx-auto">
             <JsonLd
@@ -192,6 +194,68 @@ export default async function ReviewPage(props: ReviewPageProps) {
                             {platform.longDescription}
                         </p>
                     </div>
+
+                    {platform.tldr ? (
+                        <Card className="border-primary/20 bg-primary/5">
+                            <CardHeader>
+                                <CardTitle className="text-base">TL;DR</CardTitle>
+                            </CardHeader>
+                            <CardContent className="text-sm text-muted-foreground space-y-2">
+                                <div>{platform.tldr}</div>
+                                {platform.pricingNotes ? <div>{platform.pricingNotes}</div> : null}
+                                <div className="flex flex-col gap-3 sm:flex-row">
+                                    <Button asChild>
+                                        <Link href={couponPageHref}>Get verified {platform.name} deals</Link>
+                                    </Button>
+                                    <Button asChild variant="outline">
+                                        <a href={platform.activeCoupon.link || "#"} target="_blank" rel="noopener noreferrer">
+                                            Visit official site <ExternalLink className="ml-2 h-4 w-4" />
+                                        </a>
+                                    </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    ) : null}
+
+                    {platform.whoFor?.length || platform.whoNotFor?.length ? (
+                        <div className="grid gap-6 md:grid-cols-2">
+                            {platform.whoFor?.length ? (
+                                <Card>
+                                    <CardHeader>
+                                        <CardTitle className="text-base">Who it’s for</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <ul className="space-y-2">
+                                            {platform.whoFor.map((item, i) => (
+                                                <li key={i} className="flex items-start gap-2 text-sm">
+                                                    <Check className="h-4 w-4 mt-0.5 text-primary shrink-0" />
+                                                    <span className="text-muted-foreground">{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </CardContent>
+                                </Card>
+                            ) : null}
+
+                            {platform.whoNotFor?.length ? (
+                                <Card className="border-amber-500/20 bg-amber-500/5">
+                                    <CardHeader>
+                                        <CardTitle className="text-base">Who should NOT buy this</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <ul className="space-y-2">
+                                            {platform.whoNotFor.map((item, i) => (
+                                                <li key={i} className="flex items-start gap-2 text-sm">
+                                                    <X className="h-4 w-4 mt-0.5 text-amber-600 shrink-0" />
+                                                    <span className="text-muted-foreground">{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </CardContent>
+                                </Card>
+                            ) : null}
+                        </div>
+                    ) : null}
 
                     <Separator />
 

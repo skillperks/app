@@ -20,6 +20,10 @@ export interface Platform {
     reviewCount: number;
     description: string;
     longDescription: string;
+    tldr?: string;
+    whoFor?: string[];
+    whoNotFor?: string[];
+    pricingNotes?: string;
     features: string[];
     pricing: {
         monthly?: number;
@@ -46,6 +50,18 @@ export const platforms: Platform[] = [
         reviewCount: 1240,
         description: "Hands-on, text-based learning for developers with AI-powered practice.",
         longDescription: "Educative Unlimited is a hands-on, text-based learning platform for developers. You learn by reading and practicing directly in the browser, with access to Educative’s course library, projects, cloud labs, and personalized learning tools including AI Mock Interviews.",
+        tldr: "Best for developers who want text-based, interactive learning for interview prep (especially system design) and practical practice in the browser.",
+        whoFor: [
+            "Intermediate developers prepping for system design or coding interviews",
+            "Busy learners who prefer reading + hands-on exercises over long videos",
+            "Engineers who want structured paths, projects, and optional cloud labs",
+        ],
+        whoNotFor: [
+            "Video-first learners who want instructor-led lectures",
+            "Beginners who need more guided, step-by-step foundations",
+            "People who only need one single course (subscription may feel expensive)",
+        ],
+        pricingNotes: "Most people get the best value with annual (or longer) plans—especially when paired with a verified discount.",
         features: ["Text-Based Hands-on Learning", "AI Mock Interviews", "Hands-on Courses", "Real-World Projects", "AWS Cloud Labs", "Skill Paths", "Assessments"],
         pricing: {
             monthly: 59,
@@ -91,6 +107,18 @@ export const platforms: Platform[] = [
         reviewCount: 950,
         description: "Role-based interview prep: courses, questions, practice, coaching, and perks.",
         longDescription: "Exponent is an interview preparation platform with role-specific courses (PM, system design, software engineering, data, and more), a large question bank, and structured practice. It also offers coaching services (mock interviews, resume reviews, salary negotiation), plus member resources like company guides, interview experiences, job referrals, and perks.",
+        tldr: "Strong, role-based interview prep—especially for PM and system design—if you want structured courses, practice questions, and optional coaching.",
+        whoFor: [
+            "PM candidates who want structured interview prep",
+            "Engineers practicing system design interviews",
+            "Candidates who value coaching options (mock interviews, resume, negotiation)",
+        ],
+        whoNotFor: [
+            "People who only want algorithm/LeetCode-style drills",
+            "Learners on a tight budget (monthly pricing is high)",
+            "Anyone who won’t use role-based structure and practice tools consistently",
+        ],
+        pricingNotes: "Annual billing is usually the best value. If you’re unsure, start with the free tier and upgrade once you’re in an active prep cycle.",
         features: ["Interview Courses by Role", "Question Bank", "Practice", "Mock Interviews & Coaching", "Company Guides", "Job Referrals", "Member Perks"],
         pricing: {
             monthly: 79,
@@ -131,6 +159,18 @@ export const platforms: Platform[] = [
         reviewCount: 3200,
         description: "Learn data skills with Premium, Basic, and Teams plans.",
         longDescription: "DataCamp’s pricing centers around Premium (full content library + projects + certificates/certifications), Basic (free account with first chapters), and Teams (Premium plus team management and progress tracking). Lessons and exercises run in the browser—no special software required—and eligible students can access a discounted Premium Student Plan.",
+        tldr: "Best for learning practical data skills (Python/SQL/analytics) with interactive exercises and guided tracks—especially if you want a clear progression toward data roles.",
+        whoFor: [
+            "Beginners-to-intermediate learners building Python/SQL/analytics skills",
+            "People who want structured skill/career tracks and projects",
+            "Learners who like browser-based exercises (no setup)",
+        ],
+        whoNotFor: [
+            "Advanced practitioners who only want deep, unstructured projects",
+            "People who prefer long-form video courses",
+            "Anyone expecting a full university-style curriculum from the free plan",
+        ],
+        pricingNotes: "Premium annual plans are usually the best deal—Basic is good to sample the teaching style, then upgrade when you’re ready to commit.",
         features: ["Premium / Basic / Teams Plans", "Projects", "Certificates & Certifications", "Browser-Based Exercises", "Skill & Career Tracks"],
         pricing: {
             monthly: 25,
