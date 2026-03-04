@@ -26,15 +26,15 @@ const deals = [
         platform: "DataCamp",
         couponSlug: "datacamp-coupon-code",
         offer:
-            "Master large-scale system design through visual architecture. The definitive resource for scaling services to millions of users.",
+            "Build real data skills with bite-sized courses and hands-on exercises in Python, SQL, and analytics — plus tracks for data roles.",
         rating: 4.9,
         badge: "Trending Now",
         badgeTone: "orange",
         icon: "workflow",
         iconTone: "purple",
         tags: [
-            { label: "ARCHITECTURE", tone: "pink" },
-            { label: "SCALABILITY", tone: "orange" },
+            { label: "PYTHON", tone: "pink" },
+            { label: "SQL", tone: "orange" },
         ],
     },
     {

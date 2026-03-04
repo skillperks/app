@@ -15,6 +15,27 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "SkillPerks — Smarter Savings on Tech Skills",
   description: "Verified coupons, expert reviews, and smart comparisons for developers & tech professionals.",
+  metadataBase: new URL("https://skillperks.org"),
+  openGraph: {
+    title: "SkillPerks — Smarter Savings on Tech Skills",
+    description: "Verified coupons, expert reviews, and smart comparisons for developers & tech professionals.",
+    url: "https://skillperks.org",
+    siteName: "SkillPerks",
+    type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SkillPerks — Smarter Savings on Tech Skills",
+    description: "Verified coupons, expert reviews, and smart comparisons for developers & tech professionals.",
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function RootLayout({
