@@ -4,6 +4,7 @@ export interface Coupon {
     code?: string;
     discount: string;
     description: string;
+    verifiedAt?: string;
     type?: "code" | "link";
     link?: string;
 }
@@ -70,6 +71,7 @@ export const platforms: Platform[] = [
             code: "",
             discount: "69% OFF",
             description: "Get 69% off",
+            verifiedAt: "Mar 2026",
             type: "link",
             link: "/go/educative?src=coupon",
         },
@@ -109,6 +111,7 @@ export const platforms: Platform[] = [
             code: "",
             discount: "70% OFF",
             description: "$12/month billed annually",
+            verifiedAt: "Mar 2026",
             type: "link",
             link: "/go/exponent?src=coupon",
         },
@@ -148,6 +151,7 @@ export const platforms: Platform[] = [
             code: "", // No code needed
             discount: "60% OFF",
             description: "Huge savings on annual plan",
+            verifiedAt: "Mar 2026",
             type: "link",
             link: buildGoLink({
                 to: "https://datacamp.pxf.io/skillup",

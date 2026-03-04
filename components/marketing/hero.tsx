@@ -17,13 +17,13 @@ export function Hero() {
                         Now Analyzing Learning Ecosystems
                     </div>
                     <h1 className="text-5xl font-extrabold tracking-tight leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl">
-                        Master Your{" "}
-                        <span className="text-accent-gradient">Tech Stack</span>
+                        Stop Overpaying for{" "}
+                        <span className="text-accent-gradient">Tech Courses</span>
                         <br />
-                        Through Data
+                        Find Working Coupons
                     </h1>
                     <p className="mt-6 text-lg text-muted-foreground md:text-xl">
-                        Premium reviews and verified discounts for the tools used by world-class engineering teams. No fluff, just insights.
+                        Verified coupons, expert reviews, and honest comparisons — so you don’t waste money on courses that don’t deliver.
                     </p>
                     <div className="mt-8 mx-auto max-w-3xl">
                         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -54,16 +54,6 @@ export function Hero() {
                                 </Badge>
                             ))}
                         </div>
-                    </div>
-                    <div className="mt-10 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                        <div className="flex -space-x-2">
-                            {[1, 2, 3, 4].map((i) => (
-                                <div key={i} className="h-8 w-8 rounded-full border-2 border-background bg-muted flex items-center justify-center text-[10px] font-bold">
-                                    U{i}
-                                </div>
-                            ))}
-                        </div>
-                        <p><span className="font-semibold text-foreground">10,000+</span> developers saved this month</p>
                     </div>
                 </div>
             </div>

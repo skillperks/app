@@ -27,6 +27,7 @@ export function CouponCard({ coupon, platformName }: CouponCardProps) {
     const [isCopied, setIsCopied] = useState(false);
 
     const maskedCode = coupon.code ? maskCouponCode(coupon.code) : "";
+    const verifiedAtLabel = coupon.verifiedAt ? `*Last verified: ${coupon.verifiedAt}` : "";
 
     const handleReveal = () => {
         if (coupon.link) {
@@ -67,7 +68,7 @@ export function CouponCard({ coupon, platformName }: CouponCardProps) {
                 </Button>
 
                 <p className="text-xs text-center text-muted-foreground">
-                    *Verified working as of Feb 2026
+                    {verifiedAtLabel}
                 </p>
             </div>
         );
@@ -131,7 +132,7 @@ export function CouponCard({ coupon, platformName }: CouponCardProps) {
             )}
 
             <p className="text-xs text-center text-muted-foreground">
-                *Verified working as of Feb 2026
+                {verifiedAtLabel}
             </p>
         </div>
     );
