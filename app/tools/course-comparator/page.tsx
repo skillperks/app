@@ -25,11 +25,16 @@ export function generateMetadata({
 }
 
 export default function CourseComparatorPage() {
+  const platforms = (platformsData as unknown as PlatformMeta[]).filter(
+    (p) => p.slug !== "bytebytego" && p.id !== "bytebytego"
+  );
+  const courses = (coursesData as unknown as Course[]).filter((c) => c.platformId !== "bytebytego");
+
   return (
     <Suspense fallback={null}>
       <CourseComparatorClient
-        courses={coursesData as unknown as Course[]}
-        platforms={platformsData as unknown as PlatformMeta[]}
+        courses={courses}
+        platforms={platforms}
       />
     </Suspense>
   );

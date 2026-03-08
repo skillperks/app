@@ -9,6 +9,13 @@ const SITE_URL = "https://skillperks.org";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
+  const safeDateFromIso = (iso?: string) => {
+    if (!iso) return null;
+    const parsed = new Date(`${iso}T00:00:00.000Z`);
+    if (Number.isNaN(parsed.getTime())) return null;
+    return parsed;
+  };
+
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, lastModified: now },
     { url: `${SITE_URL}/browse`, lastModified: now },
@@ -38,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const couponRoutes: MetadataRoute.Sitemap = platforms.map((p) => ({
     url: `${SITE_URL}/coupons/${p.couponSlug}`,
-    lastModified: now,
+    lastModified: safeDateFromIso(p.activeCoupon.verifiedAtIso) ?? now,
   }));
 
   const comparisonRoutes: MetadataRoute.Sitemap = comparisons.map((c) => ({

@@ -82,6 +82,20 @@ export default async function CouponPage(props: CouponPageProps) {
         url: canonicalUrl,
     });
 
+    const now = new Date();
+    const expiresAt = platform.activeCoupon.expiresAtIso
+        ? new Date(`${platform.activeCoupon.expiresAtIso}T23:59:59.999Z`)
+        : null;
+    const isExpired = expiresAt ? expiresAt.getTime() < now.getTime() : false;
+
+    const statusLabel = expiresAt ? (isExpired ? "Expired" : "Active") : "No expiry info";
+    const statusTone = expiresAt ? (isExpired ? "bg-red-100 text-red-800 border-red-200" : "bg-green-100 text-green-800 border-green-200") : "bg-muted text-muted-foreground border-muted";
+    const verifiedAtLabel = platform.activeCoupon.verifiedAt
+        ? `Last verified: ${platform.activeCoupon.verifiedAt}`
+        : platform.activeCoupon.verifiedAtIso
+            ? `Last verified: ${platform.activeCoupon.verifiedAtIso}`
+            : "";
+
     const offerJsonLd = {
         "@context": "https://schema.org",
         "@type": "Product",
@@ -95,7 +109,7 @@ export default async function CouponPage(props: CouponPageProps) {
             "@type": "Offer",
             url: canonicalUrl,
             description: `${platform.activeCoupon.discount} — ${platform.activeCoupon.description}`,
-            availability: "https://schema.org/InStock",
+            availability: isExpired ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
         },
     };
 
@@ -229,9 +243,12 @@ export default async function CouponPage(props: CouponPageProps) {
                 {/* Main Content */}
                 <div className="space-y-8">
                     <div className="text-center md:text-left">
-                        <Badge className="mb-4 bg-green-100 text-green-800 hover:bg-green-200 border-green-200">
-                            Verified Today
-                        </Badge>
+                        <div className="mb-4 flex flex-wrap gap-2">
+                            <Badge className={statusTone}>{statusLabel}</Badge>
+                            {verifiedAtLabel ? (
+                                <Badge variant="secondary">{verifiedAtLabel}</Badge>
+                            ) : null}
+                        </div>
                         <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
                             {platform.name} {couponPrimaryLabel} & Deals (2026)
                         </h1>
@@ -239,6 +256,133 @@ export default async function CouponPage(props: CouponPageProps) {
                             Save up to <span className="text-primary font-bold">{platform.activeCoupon.discount}</span> with our exclusive verified coupons.
                         </p>
                     </div>
+
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="text-lg">{platform.name} deals: quick summary</CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-sm text-muted-foreground space-y-4">
+                            <p>
+                                If you’re searching for a <strong className="text-foreground">working {platform.name} {couponPrimaryLabel.toLowerCase()}</strong>,
+                                this page is designed for high-intent buyers: you already want {platform.name}—you just need the best price without wasting time testing
+                                expired codes.
+                            </p>
+                            <p>
+                                The current best offer we’re tracking is <strong className="text-foreground">{platform.activeCoupon.discount}</strong> ({platform.activeCoupon.description}).
+                                {platform.activeCoupon.type === "link"
+                                    ? " It’s a deal link, so the discount should apply automatically at checkout."
+                                    : " It’s a coupon code—copy it and apply it during checkout."
+                                }
+                            </p>
+                            <p>
+                                <strong className="text-foreground">Status:</strong> {statusLabel}.
+                                {expiresAt ? " If the promotion ends early or changes, we update the page the next time we verify the offer." : " This offer doesn’t publish a clear end date, so we rely on verification checks."}
+                            </p>
+                            <div className="grid gap-4 md:grid-cols-2">
+                                <div className="rounded-lg border bg-muted/20 p-4">
+                                    <div className="text-xs text-muted-foreground uppercase tracking-wide">Best current discount</div>
+                                    <div className="text-2xl font-bold text-primary">{platform.activeCoupon.discount}</div>
+                                    <div className="text-sm text-muted-foreground">{platform.activeCoupon.description}</div>
+                                </div>
+                                <div className="rounded-lg border bg-muted/20 p-4">
+                                    <div className="text-xs text-muted-foreground uppercase tracking-wide">Best next step</div>
+                                    <div className="text-sm text-muted-foreground mt-2">
+                                        Read the full review to confirm fit, then come back to activate the deal.
+                                    </div>
+                                    <div className="mt-3">
+                                        <Button asChild variant="outline" className="w-full">
+                                            <Link href={`/reviews/${platform.slug}`}>Read {platform.name} review</Link>
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="text-lg">Pricing context (what you’ll actually pay)</CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-sm text-muted-foreground space-y-4">
+                            <p>
+                                Coupon pages convert best when pricing is clear. {platform.name} pricing can change over time, but these are the typical reference points we use
+                                when comparing “monthly vs annual” value.
+                            </p>
+                            <div className="grid gap-3 md:grid-cols-3">
+                                <div className="rounded-lg border p-4">
+                                    <div className="text-xs text-muted-foreground uppercase tracking-wide">Monthly</div>
+                                    <div className="mt-1 text-base font-semibold text-foreground">
+                                        {typeof platform.pricing.monthly === "number" ? `$${platform.pricing.monthly}` : "Varies"}
+                                    </div>
+                                    <div className="mt-1 text-xs text-muted-foreground">Good for short-term testing.</div>
+                                </div>
+                                <div className="rounded-lg border p-4">
+                                    <div className="text-xs text-muted-foreground uppercase tracking-wide">Annual</div>
+                                    <div className="mt-1 text-base font-semibold text-foreground">${platform.pricing.annual}</div>
+                                    <div className="mt-1 text-xs text-muted-foreground">Usually best value with promos.</div>
+                                </div>
+                                <div className="rounded-lg border p-4">
+                                    <div className="text-xs text-muted-foreground uppercase tracking-wide">What to do</div>
+                                    <div className="mt-1 text-xs text-muted-foreground">
+                                        Activate the deal, then verify the final checkout price before paying.
+                                    </div>
+                                </div>
+                            </div>
+                            <p>
+                                Practical rule: if you’re committing to a real learning goal (interview prep, career transition, or structured upskilling), annual deals tend to beat monthly pricing.
+                                If you’re just exploring, start monthly or free-tier first.
+                            </p>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="text-lg">How we verify coupons (and how you should double-check)</CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-sm text-muted-foreground space-y-4">
+                            <p>
+                                Coupon sites lose trust when they publish expired codes. SkillPerks is intentionally simple: for each platform we highlight one “best current deal” and update it
+                                when we verify changes.
+                            </p>
+                            <div className="space-y-2">
+                                <div>- We track the latest deal link or code and check whether it still applies at checkout.</div>
+                                <div>- We keep the “Last verified” label updated so you can judge freshness at a glance.</div>
+                                <div>- We recommend you confirm the final price on the official checkout page (promos can be geo- or account-specific).</div>
+                            </div>
+                            <p>
+                                If a coupon doesn’t apply:
+                                try the main deal link, try a different browser/incognito, and consider switching billing cycles (many promos are annual-only).
+                            </p>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="text-lg">Related pages (for smarter decisions)</CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-sm text-muted-foreground space-y-3">
+                            <p>
+                                Most people waste money by buying the wrong platform even with a discount. Use these pages to confirm fit and compare alternatives before subscribing.
+                            </p>
+                            <div className="grid gap-3 md:grid-cols-2">
+                                <Button asChild variant="outline" className="w-full">
+                                    <Link href={`/reviews/${platform.slug}`}>{platform.name} review</Link>
+                                </Button>
+                                <Button asChild variant="outline" className="w-full">
+                                    <Link href="/comparisons">Browse comparisons</Link>
+                                </Button>
+                            </div>
+                            <div className="text-sm">
+                                Popular comparisons:
+                                <span> </span>
+                                <Link href="/comparisons/educative-vs-exponent" className="underline">Educative vs Exponent</Link>,
+                                <span> </span>
+                                <Link href="/comparisons/educative-vs-datacamp" className="underline">Educative vs DataCamp</Link>,
+                                <span> </span>
+                                <Link href="/comparisons/datacamp-vs-exponent" className="underline">DataCamp vs Exponent</Link>.
+                            </div>
+                        </CardContent>
+                    </Card>
 
                     {platform.slug === "educative" && (
                         <Card className="border-primary/20">
@@ -386,15 +530,16 @@ export default async function CouponPage(props: CouponPageProps) {
                             <CouponCard coupon={platform.activeCoupon} platformName={platform.name} />
                             <div className="mt-4 flex flex-wrap gap-4 text-sm text-muted-foreground">
                                 <span className="flex items-center gap-1 text-green-600 font-medium">
-                                    <ShieldCheck className="h-4 w-4" /> 100% Success Rate
+                                    <ShieldCheck className="h-4 w-4" /> Editorially verified
                                 </span>
-                                <span className="flex items-center gap-1">
-                                    <Clock className="h-4 w-4" /> Expires Soon
-                                </span>
+                                {expiresAt ? (
+                                    <span className="flex items-center gap-1">
+                                        <Clock className="h-4 w-4" /> Expires: {platform.activeCoupon.expiresAtIso}
+                                    </span>
+                                ) : null}
                             </div>
                         </CardContent>
-                        <CardFooter className="bg-muted/50 pt-4 flex justify-between items-center text-xs text-muted-foreground">
-                            <span>Last used: 12 minutes ago</span>
+                        <CardFooter className="bg-muted/50 pt-4 flex justify-end items-center text-xs text-muted-foreground">
                             <Link href="/disclosure" className="underline">Terms & Conditions</Link>
                         </CardFooter>
                     </Card>
