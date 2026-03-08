@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "SkillPerks — Smarter Savings on Tech Skills",
   description: "Verified coupons, expert reviews, and smart comparisons for developers & tech professionals.",
   metadataBase: new URL("https://skillperks.org"),
+  alternates: {
+    canonical: "./",
+  },
   openGraph: {
     title: "SkillPerks — Smarter Savings on Tech Skills",
     description: "Verified coupons, expert reviews, and smart comparisons for developers & tech professionals.",
