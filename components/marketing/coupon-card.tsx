@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Check, Copy, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 
 import { Coupon } from "@/lib/data";
 
@@ -27,10 +28,31 @@ export function CouponCard({ coupon, platformName }: CouponCardProps) {
     const [isCopied, setIsCopied] = useState(false);
 
     const maskedCode = coupon.code ? maskCouponCode(coupon.code) : "";
-    const verifiedAtLabel = coupon.verifiedAt ? `*Last verified: ${coupon.verifiedAt}` : "";
+    const verifiedAtRaw = coupon.verifiedAt ?? coupon.verifiedAtIso;
+    const verifiedAtLabel = verifiedAtRaw ? `Last verified: ${verifiedAtRaw}` : "";
+
+    const now = new Date();
+    const expiresAt = coupon.expiresAtIso ? new Date(`${coupon.expiresAtIso}T23:59:59.999Z`) : null;
+    const isExpired = expiresAt ? expiresAt.getTime() < now.getTime() : false;
+    const statusLabel = expiresAt ? (isExpired ? "Expired" : "Active") : "No expiry info";
+    const statusTone = expiresAt
+        ? isExpired
+            ? "bg-red-100 text-red-800 border-red-200"
+            : "bg-green-100 text-green-800 border-green-200"
+        : "bg-muted text-muted-foreground border-muted";
 
     const handleReveal = () => {
         if (coupon.link) {
+            trackEvent("outbound_click", {
+                platform: platformName,
+                coupon_type: coupon.type ?? "code",
+                discount: coupon.discount,
+                destination: coupon.link,
+                status: statusLabel,
+                verified_at: verifiedAtRaw,
+                expires_at: coupon.expiresAtIso,
+                action: "reveal",
+            });
             window.open(coupon.link, "_blank");
         }
         setIsRevealed(true);
@@ -40,6 +62,14 @@ export function CouponCard({ coupon, platformName }: CouponCardProps) {
         if (coupon.code) {
             navigator.clipboard.writeText(coupon.code);
             setIsCopied(true);
+            trackEvent("copy_coupon", {
+                platform: platformName,
+                coupon_type: coupon.type ?? "code",
+                discount: coupon.discount,
+                status: statusLabel,
+                verified_at: verifiedAtRaw,
+                expires_at: coupon.expiresAtIso,
+            });
             setTimeout(() => setIsCopied(false), 2000);
         }
     };
@@ -48,6 +78,16 @@ export function CouponCard({ coupon, platformName }: CouponCardProps) {
     if (coupon.type === "link") {
         return (
             <div className="space-y-4">
+                <div className="flex flex-wrap items-center justify-center gap-2">
+                    <span className={cn("inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold", statusTone)}>
+                        {statusLabel}
+                    </span>
+                    {verifiedAtLabel ? (
+                        <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-semibold text-slate-700">
+                            {verifiedAtLabel}
+                        </span>
+                    ) : null}
+                </div>
                 <div className="bg-muted/50 p-4 rounded-lg text-center border border-dashed border-primary/30">
                     <p className="text-sm font-medium text-muted-foreground mb-1">
                         No coupon code needed
@@ -62,14 +102,27 @@ export function CouponCard({ coupon, platformName }: CouponCardProps) {
                     size="lg"
                     asChild
                 >
-                    <a href={coupon.link || "#"} target="_blank" rel="noopener noreferrer">
+                    <a
+                        href={coupon.link || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => {
+                            if (!coupon.link) return;
+                            trackEvent("outbound_click", {
+                                platform: platformName,
+                                coupon_type: coupon.type ?? "link",
+                                discount: coupon.discount,
+                                destination: coupon.link,
+                                status: statusLabel,
+                                verified_at: verifiedAtRaw,
+                                expires_at: coupon.expiresAtIso,
+                                action: "activate_deal",
+                            });
+                        }}
+                    >
                         Activate Deal <ExternalLink className="ml-2 h-4 w-4" />
                     </a>
                 </Button>
-
-                <p className="text-xs text-center text-muted-foreground">
-                    {verifiedAtLabel}
-                </p>
             </div>
         );
     }
@@ -77,6 +130,16 @@ export function CouponCard({ coupon, platformName }: CouponCardProps) {
     // Code Deal (Reveal Pattern)
     return (
         <div className="space-y-4">
+            <div className="flex flex-wrap items-center justify-center gap-2">
+                <span className={cn("inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold", statusTone)}>
+                    {statusLabel}
+                </span>
+                {verifiedAtLabel ? (
+                    <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-semibold text-slate-700">
+                        {verifiedAtLabel}
+                    </span>
+                ) : null}
+            </div>
             {!isRevealed ? (
                 // Hidden State
                 <>
@@ -124,16 +187,29 @@ export function CouponCard({ coupon, platformName }: CouponCardProps) {
                         className="w-full"
                         asChild
                     >
-                        <a href={coupon.link || "#"} target="_blank" rel="noopener noreferrer">
+                        <a
+                            href={coupon.link || "#"}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => {
+                                if (!coupon.link) return;
+                                trackEvent("outbound_click", {
+                                    platform: platformName,
+                                    coupon_type: coupon.type ?? "code",
+                                    discount: coupon.discount,
+                                    destination: coupon.link,
+                                    status: statusLabel,
+                                    verified_at: verifiedAtRaw,
+                                    expires_at: coupon.expiresAtIso,
+                                    action: "visit_again",
+                                });
+                            }}
+                        >
                             Visit {platformName} Again <ExternalLink className="ml-2 h-4 w-4" />
                         </a>
                     </Button>
                 </>
             )}
-
-            <p className="text-xs text-center text-muted-foreground">
-                {verifiedAtLabel}
-            </p>
         </div>
     );
 }
