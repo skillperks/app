@@ -7,7 +7,6 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const type = searchParams.get("type") || "default";
   const slug = searchParams.get("slug") || "";
-  const title = searchParams.get("title") || "";
 
   // Dynamic content based on type
   let mainTitle = "SkillPerks";

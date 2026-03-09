@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, X, Minus, Star, ExternalLink } from "lucide-react";
+import { ArrowRight, Check, Star, ExternalLink } from "lucide-react";
 
-import { getPlatformBySlug, platforms } from "@/lib/data";
+import { getPlatformBySlug } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -70,7 +70,7 @@ export default function EducativeVsDataCamp() {
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
           Two popular learning platforms, but they serve very different purposes. 
-          Here's the honest breakdown to help you choose the right one.
+          Here&apos;s the honest breakdown to help you choose the right one.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Badge variant="secondary" className="text-sm">
@@ -93,7 +93,7 @@ export default function EducativeVsDataCamp() {
             <div>
               <h3 className="font-semibold text-green-600 mb-2">Choose Educative if:</h3>
               <ul className="space-y-1 text-sm text-muted-foreground">
-                <li>• You're preparing for FAANG interviews</li>
+                <li>• You&apos;re preparing for FAANG interviews</li>
                 <li>• You prefer text-based interactive learning</li>
                 <li>• You need system design and coding patterns</li>
                 <li>• You want in-browser coding practice</li>
@@ -102,7 +102,7 @@ export default function EducativeVsDataCamp() {
             <div>
               <h3 className="font-semibold text-blue-600 mb-2">Choose DataCamp if:</h3>
               <ul className="space-y-1 text-sm text-muted-foreground">
-                <li>• You're pursuing data science/analytics</li>
+                <li>• You&apos;re pursuing data science/analytics</li>
                 <li>• You prefer video-based learning</li>
                 <li>• You need Python, R, and SQL skills</li>
                 <li>• You want mobile app access</li>
@@ -195,7 +195,7 @@ export default function EducativeVsDataCamp() {
       {/* Bottom CTA */}
       <Card className="text-center">
         <CardContent className="p-8 space-y-4">
-          <h2 className="text-2xl font-bold">Still can't decide?</h2>
+          <h2 className="text-2xl font-bold">Still can&apos;t decide?</h2>
           <p className="text-muted-foreground">
             Read our detailed reviews to see real user experiences and current deals.
           </p>

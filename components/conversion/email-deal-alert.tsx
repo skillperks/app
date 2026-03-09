@@ -70,9 +70,9 @@ export function EmailDealAlert({ platform, currentDiscount }: EmailDealAlertProp
       <Card className="bg-green-500/5 border-green-500/20">
         <CardContent className="p-6 text-center">
           <Check className="h-12 w-12 text-green-500 mx-auto mb-4" />
-          <h3 className="font-semibold text-green-400 mb-2">You're on the list!</h3>
+          <h3 className="font-semibold text-green-400 mb-2">You&apos;re on the list!</h3>
           <p className="text-sm text-muted-foreground">
-            We'll email you when {platform} has a better deal.
+            We&apos;ll email you when {platform} has a better deal.
           </p>
         </CardContent>
       </Card>

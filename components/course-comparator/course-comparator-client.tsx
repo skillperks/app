@@ -158,8 +158,6 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
       return {};
     }
   });
-  const [mobileActiveId, setMobileActiveId] = useState<string>("");
-  const [hasCompared, setHasCompared] = useState(false);
   const [revealedCoupons, setRevealedCoupons] = useState<Record<string, boolean>>({});
 
   const comparisonRef = useRef<HTMLDivElement | null>(null);
@@ -251,11 +249,6 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
     return sorted;
   }, [courses, selectedIds, sortKey]);
 
-  const effectiveMobileActiveId = useMemo(() => {
-    if (selectedCourses.length === 0) return "";
-    if (mobileActiveId && selectedCourses.some((c) => c.id === mobileActiveId)) return mobileActiveId;
-    return selectedCourses[0]?.id ?? "";
-  }, [mobileActiveId, selectedCourses]);
 
   const showComparison = useMemo(() => {
     return selectedIds.length >= 2;
@@ -293,7 +286,6 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
 
   function clearAll() {
     syncSelectedToUrl([]);
-    setHasCompared(false);
   }
 
   function onCompare() {
@@ -308,11 +300,6 @@ export function CourseComparatorClient({ courses, platforms }: { courses: Course
     });
   }
 
-  useEffect(() => {
-    if (selectedCourses.length >= 2) {
-      setHasCompared(true);
-    }
-  }, [selectedCourses.length]);
 
   async function copyShareUrl() {
     const url = typeof window === "undefined" ? "" : window.location.href;
