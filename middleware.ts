@@ -8,6 +8,11 @@ export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const proto = request.headers.get("x-forwarded-proto") ?? url.protocol.replace(":", "");
 
+  // Skip redirects in development
+  if (process.env.NODE_ENV === "development") {
+    return NextResponse.next();
+  }
+
   const needsWwwRedirect = host.toLowerCase().startsWith("www.");
   const needsHttpsRedirect = proto === "http";
 

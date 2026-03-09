@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { trackEvent } from "@/lib/analytics";
 
 export function NewsletterSignup({ source = "footer" }: { source?: string }) {
   const [email, setEmail] = useState("");
@@ -14,6 +15,10 @@ export function NewsletterSignup({ source = "footer" }: { source?: string }) {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    trackEvent("newsletter_signup_submit", {
+      source,
+      pathname: pathname ?? "",
+    });
 
     try {
       const res = await fetch("/api/newsletter", {
@@ -24,13 +29,27 @@ export function NewsletterSignup({ source = "footer" }: { source?: string }) {
 
       if (!res.ok) {
         setStatus("error");
+        trackEvent("newsletter_signup_error", {
+          source,
+          pathname: pathname ?? "",
+          status: res.status,
+        });
         return;
       }
 
       setStatus("success");
       setEmail("");
+      trackEvent("newsletter_signup_success", {
+        source,
+        pathname: pathname ?? "",
+      });
     } catch {
       setStatus("error");
+      trackEvent("newsletter_signup_error", {
+        source,
+        pathname: pathname ?? "",
+        status: "network",
+      });
     }
   };
 

@@ -26,7 +26,32 @@ export default function CouponsIndexPage() {
               <CardHeader className="space-y-2">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-xl">{platform.name}</CardTitle>
-                  <Badge variant="secondary">Verified</Badge>
+                  {(() => {
+                    const now = new Date();
+                    const expiresAt = platform.activeCoupon.expiresAtIso
+                      ? new Date(`${platform.activeCoupon.expiresAtIso}T23:59:59.999Z`)
+                      : null;
+                    const isExpired = expiresAt ? expiresAt.getTime() < now.getTime() : false;
+                    const statusLabel = expiresAt ? (isExpired ? "Expired" : "Active") : "No expiry info";
+                    const verifiedAtRaw = platform.activeCoupon.verifiedAt ?? platform.activeCoupon.verifiedAtIso;
+                    const verifiedAtLabel = verifiedAtRaw ? `Last verified: ${verifiedAtRaw}` : "";
+
+                    return (
+                      <div className="flex flex-wrap items-center justify-end gap-2">
+                        <Badge
+                          variant={statusLabel === "Expired" ? "destructive" : "secondary"}
+                          className={statusLabel === "No expiry info" ? "text-muted-foreground" : undefined}
+                        >
+                          {statusLabel}
+                        </Badge>
+                        {verifiedAtLabel ? (
+                          <Badge variant="outline" className="text-muted-foreground">
+                            {verifiedAtLabel}
+                          </Badge>
+                        ) : null}
+                      </div>
+                    );
+                  })()}
                 </div>
                 <p className="text-sm text-muted-foreground">{platform.description}</p>
               </CardHeader>

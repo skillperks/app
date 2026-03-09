@@ -30,9 +30,6 @@ export default function ReviewsIndexPage() {
                 <p className="text-sm text-muted-foreground">{platform.description}</p>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="text-sm text-muted-foreground">
-                  {platform.reviewCount.toLocaleString()} user ratings
-                </div>
                 <div className="flex flex-col gap-2">
                   <Button asChild>
                     <Link href={`/reviews/${platform.slug}`}>Read {platform.name} Review</Link>

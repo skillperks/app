@@ -44,7 +44,7 @@ export default function ExponentCoursesPage() {
                             </CardHeader>
                             <CardContent className="space-y-4">
                                 <div className="text-sm text-muted-foreground">
-                                    Est. {course.estimatedHours} hours • {course.rating}/5 ({course.reviewCount.toLocaleString()} reviews)
+                                    Est. {course.estimatedHours} hours • {course.rating}/5
                                 </div>
                                 <ul className="space-y-2">
                                     {course.keyOutcomes.slice(0, 3).map((o) => (

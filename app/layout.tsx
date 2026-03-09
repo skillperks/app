@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
 import Script from "next/script";
+import { Suspense } from "react";
 import "./globals.css";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { JsonLd } from "@/components/seo/json-ld";
+import { Ga4PageView } from "@/components/seo/ga4-pageview";
 import { buildOrganizationJsonLd, buildWebSiteJsonLd } from "@/lib/seo";
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-});
 
 export const metadata: Metadata = {
   title: "SkillPerks — Smarter Savings on Tech Skills",
@@ -54,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="dark">
       <body
-        className={`${outfit.variable} antialiased`}
+        className="antialiased"
       >
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
@@ -66,6 +62,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${gaMeasurementId}', ${isProd ? "{}" : "{ send_page_view: false }"});`}
         </Script>
+        <Suspense>
+          <Ga4PageView measurementId={gaMeasurementId} />
+        </Suspense>
         <div className="flex min-h-screen flex-col">
           <JsonLd data={[buildOrganizationJsonLd(), buildWebSiteJsonLd()]} />
           <Navbar />

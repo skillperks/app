@@ -40,7 +40,7 @@ export default async function ExponentCoursePage(props: ExponentCoursePageProps)
                         </h1>
                         <p className="text-xl text-muted-foreground leading-relaxed">{course.subtitle}</p>
                         <div className="text-sm text-muted-foreground">
-                            Est. {course.estimatedHours} hours • {course.rating}/5 ({course.reviewCount.toLocaleString()} reviews)
+                            Est. {course.estimatedHours} hours • {course.rating}/5
                         </div>
                         <div className="flex flex-col sm:flex-row gap-3">
                             <Button asChild size="lg">
