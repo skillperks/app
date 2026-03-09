@@ -5,6 +5,7 @@ import "./globals.css";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { JsonLd } from "@/components/seo/json-ld";
+import { Ga4PageView } from "@/components/seo/ga4-pageview";
 import { buildOrganizationJsonLd, buildWebSiteJsonLd } from "@/lib/seo";
 
 const outfit = Outfit({
@@ -66,6 +67,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${gaMeasurementId}', ${isProd ? "{}" : "{ send_page_view: false }"});`}
         </Script>
+        <Ga4PageView measurementId={gaMeasurementId} />
         <div className="flex min-h-screen flex-col">
           <JsonLd data={[buildOrganizationJsonLd(), buildWebSiteJsonLd()]} />
           <Navbar />

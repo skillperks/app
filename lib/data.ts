@@ -19,7 +19,7 @@ export interface Platform {
     logo: string;
     logoColor: string;
     rating: number;
-    reviewCount: number;
+    reviewCount?: number;
     description: string;
     longDescription: string;
     tldr?: string;
@@ -49,7 +49,6 @@ export const platforms: Platform[] = [
         logo: "/logos/educative.png", // Placeholder
         logoColor: "bg-blue-600",
         rating: 4.8,
-        reviewCount: 1240,
         description: "Hands-on, text-based learning for developers with AI-powered practice.",
         longDescription: "Educative Unlimited is a hands-on, text-based learning platform for developers. You learn by reading and practicing directly in the browser, with access to Educative’s course library, projects, cloud labs, and personalized learning tools including AI Mock Interviews.",
         tldr: "Best for developers who want text-based, interactive learning for interview prep (especially system design) and practical practice in the browser.",
@@ -108,7 +107,6 @@ export const platforms: Platform[] = [
         logo: "/logos/exponent.png",
         logoColor: "bg-indigo-600",
         rating: 4.8,
-        reviewCount: 950,
         description: "Role-based interview prep: courses, questions, practice, coaching, and perks.",
         longDescription: "Exponent is an interview preparation platform with role-specific courses (PM, system design, software engineering, data, and more), a large question bank, and structured practice. It also offers coaching services (mock interviews, resume reviews, salary negotiation), plus member resources like company guides, interview experiences, job referrals, and perks.",
         tldr: "Strong, role-based interview prep—especially for PM and system design—if you want structured courses, practice questions, and optional coaching.",
@@ -162,7 +160,6 @@ export const platforms: Platform[] = [
         logo: "/logos/datacamp.png",
         logoColor: "bg-green-600",
         rating: 4.7,
-        reviewCount: 3200,
         description: "Learn data skills with Premium, Basic, and Teams plans.",
         longDescription: "DataCamp’s pricing centers around Premium (full content library + projects + certificates/certifications), Basic (free account with first chapters), and Teams (Premium plus team management and progress tracking). Lessons and exercises run in the browser—no special software required—and eligible students can access a discounted Premium Student Plan.",
         tldr: "Best for learning practical data skills (Python/SQL/analytics) with interactive exercises and guided tracks—especially if you want a clear progression toward data roles.",

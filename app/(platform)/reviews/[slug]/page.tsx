@@ -184,8 +184,6 @@ export default async function ReviewPage(props: ReviewPageProps) {
                                 <span className="font-bold text-lg text-foreground">{platform.rating}</span>
                             </div>
                             <span>•</span>
-                            <span>{platform.reviewCount} user ratings</span>
-                            <span>•</span>
                             <span className="text-green-600 font-medium flex items-center gap-1">
                                 <ShieldCheck className="h-4 w-4" /> Editorial Verified
                             </span>
