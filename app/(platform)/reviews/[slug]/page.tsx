@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import { CouponCard } from "@/components/marketing/coupon-card";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { StickyBestDeal } from "@/components/conversion/sticky-best-deal";
+import { EmailDealAlert } from "@/components/conversion/email-deal-alert";
 
 interface ReviewPageProps {
     params: Promise<{
@@ -543,6 +545,11 @@ export default async function ReviewPage(props: ReviewPageProps) {
 
                 {/* Sidebar */}
                 <div className="space-y-6">
+                    <EmailDealAlert 
+                        platform={platform.name}
+                        currentDiscount={platform.activeCoupon.discount}
+                    />
+                    
                     <Card className="sticky top-24 overflow-hidden border-primary/20 shadow-lg">
                         <div className={`${platform.logoColor} h-24 flex items-center justify-center`}>
                             <span className="text-4xl font-bold text-white drop-shadow-md">{platform.name[0]}</span>
@@ -591,6 +598,13 @@ export default async function ReviewPage(props: ReviewPageProps) {
                     </div>
                 </div>
             </div>
+            
+            <StickyBestDeal 
+                platform={platform.name}
+                discount={platform.activeCoupon.discount}
+                couponSlug={platform.couponSlug}
+                expiresAt={platform.activeCoupon.expiresAtIso}
+            />
         </div>
     );
 }
