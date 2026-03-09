@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { platforms } from "@/lib/data";
 import { CouponCard } from "@/components/marketing/coupon-card";
@@ -62,7 +63,11 @@ export default function CouponsIndexPage() {
                   <div className="text-sm text-muted-foreground">{platform.activeCoupon.description}</div>
                 </div>
 
-                <CouponCard coupon={platform.activeCoupon} platformName={platform.name} />
+                <Suspense fallback={
+                  <div className="w-full h-24 bg-muted/20 rounded-lg animate-pulse" />
+                }>
+                  <CouponCard coupon={platform.activeCoupon} platformName={platform.name} />
+                </Suspense>
 
                 <div className="flex flex-col gap-2">
                   <Button asChild variant="outline">
