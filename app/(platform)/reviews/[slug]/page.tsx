@@ -6,6 +6,7 @@ import { Check, X, Star, ExternalLink, ShieldCheck } from "lucide-react";
 import { getPlatformBySlug, platforms } from "@/lib/data";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CommentsPlaceholder } from "@/components/shared/comments-placeholder";
+import { AffiliateDisclosureBar } from "@/components/shared/affiliate-disclosure-bar";
 import { absoluteUrl, buildBreadcrumbJsonLd, buildReviewJsonLd } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { CouponCard } from "@/components/marketing/coupon-card";
@@ -161,6 +162,7 @@ export default async function ReviewPage(props: ReviewPageProps) {
 
     return (
         <div className="container px-4 py-10 md:px-6 md:py-16 mx-auto">
+            <AffiliateDisclosureBar />
             <JsonLd
                 data={
                     educativeFaqJsonLd
