@@ -100,16 +100,73 @@ export default async function CouponPage(props: CouponPageProps) {
         "@context": "https://schema.org",
         "@type": "Product",
         name: `${platform.name} Subscription`,
+        description: `${platform.name} is a ${platform.description} Save ${platform.activeCoupon.discount} with verified coupons.`,
+        image: absoluteUrl(`/api/og?type=coupon&slug=${platform.slug}`),
         url: canonicalUrl,
         brand: {
             "@type": "Brand",
             name: platform.name,
+        },
+        aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: platform.rating,
+            bestRating: 5,
+            worstRating: 1,
+            ratingCount: platform.reviewCount ?? 100,
+        },
+        review: {
+            "@type": "Review",
+            reviewRating: {
+                "@type": "Rating",
+                ratingValue: platform.rating,
+                bestRating: 5,
+            },
+            author: {
+                "@type": "Organization",
+                name: "SkillPerks",
+            },
         },
         offers: {
             "@type": "Offer",
             url: canonicalUrl,
             description: `${platform.activeCoupon.discount} — ${platform.activeCoupon.description}`,
             availability: isExpired ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+            price: platform.pricing.annual,
+            priceCurrency: "USD",
+            priceValidUntil: platform.activeCoupon.expiresAtIso ?? "2026-12-31",
+            hasMerchantReturnPolicy: {
+                "@type": "MerchantReturnPolicy",
+                applicableCountry: "US",
+                returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+                merchantReturnDays: 0,
+            },
+            shippingDetails: {
+                "@type": "OfferShippingDetails",
+                shippingRate: {
+                    "@type": "MonetaryAmount",
+                    value: 0,
+                    currency: "USD",
+                },
+                shippingDestination: {
+                    "@type": "DefinedRegion",
+                    addressCountry: "US",
+                },
+                deliveryTime: {
+                    "@type": "ShippingDeliveryTime",
+                    handlingTime: {
+                        "@type": "QuantitativeValue",
+                        minValue: 0,
+                        maxValue: 0,
+                        unitCode: "DAY",
+                    },
+                    transitTime: {
+                        "@type": "QuantitativeValue",
+                        minValue: 0,
+                        maxValue: 0,
+                        unitCode: "DAY",
+                    },
+                },
+            },
         },
     };
 
